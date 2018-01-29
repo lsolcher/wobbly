@@ -261,7 +261,9 @@ void die(){
   }
 }
 
-
+void showDieAnimation() {
+  
+}
 
 void gameOver() {
   state = "INIT";
