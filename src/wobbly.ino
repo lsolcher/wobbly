@@ -211,6 +211,7 @@ void spawnEnemies() {
   for(auto it=spawnList->begin();it!=spawnList->end();it++) {
     if((*it)->spawns()) {
       Enemy* e = new Entity((*it)->getPosition(), (*it)->getSpawnColor(), "enemy");
+      e->setChangesDirection(false);
       entityList->push_back(e);
     }
   }
@@ -262,7 +263,7 @@ void die(){
 }
 
 void showDieAnimation() {
-  
+
 }
 
 void gameOver() {
