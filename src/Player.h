@@ -1,7 +1,7 @@
 #pragma once
 #include "Arduino.h"
 #include "Entity.h"
-#define LED_NUM             100
+#define LED_NUM             150
 
 
 #define MOVEMENTSPEED 10; //the higher, the slower
@@ -9,26 +9,20 @@
 class Player: public Entity {
   private:
     short _lives = 3;
-    //int mapPlayer(int position);
-    //int position;
   public:
     short getLives();
     void setLives(short lives);
-  //  int getPosition();
-    //Player();
     void move(int input);
 };
 
 
 void Player::move(int input) {
-//  Serial.println("INPUT");
-  //Serial.println(input);
-
-  _position += input/MOVEMENTSPEED;
+  int moveAmt = input/MOVEMENTSPEED;
+  if(moveAmt > 3)
+    moveAmt = 3;
+  _position += moveAmt;
   (_position > 999) ? _position = 999 : _position = _position;
   (_position < 0) ? _position = 0 : _position = _position;
-  //Serial.println("MOVE");
-  //Serial.println(_position);
 
 }
 
@@ -39,7 +33,3 @@ void Player::setLives(short lives){
 short Player::getLives() {
   return _lives;
 }
-
-/*int Player::mapPlayer(int position) {
-  return constrain((int)map(position, 0, 1000, 0, LED_NUM-1), 0, LED_NUM-1);
-}*/

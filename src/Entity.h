@@ -14,6 +14,7 @@ public:
   int getPosition();
   void setPosition(int position);
   void setColor(CRGB::HTMLColorCode color);
+  virtual void setActive(int tick) {};
   char* getType();
   CRGB::HTMLColorCode getColor();
 };

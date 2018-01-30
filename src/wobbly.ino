@@ -12,7 +12,10 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "SpawnPoint.h"
+#include "Trap.h"
+#include "Water.h"
 
+//TODO: Wasser, Endgegner, EndAnimation, Sound
 
 
 
@@ -21,18 +24,22 @@ int16_t ax, ay, az;
 int16_t gx, gy, gz;
 
 // Game setup
-#define TICKTIME  10
+#define TICKTIME  20
 short currentLevel = 0;
 short difficulty = 0; //0 = easy, 1 = hard
 bool attacking = false;
 short attackTicks = 0;
-int attackRange = 0;
-short attackTime = 5;
+int attackRange = 2;
+short attackTime = 25 ;
 short spawnSpeed;
+uint8_t trapSize = 1;
 int tick = 0;
+uint8_t moveDelay = 0;
+int lifeLEDs[3] = {28, 42 ,52};
+CRGB::HTMLColorCode winColor;
 
 // LED setup
-#define LED_NUM             100    // Anzahl LEDs
+#define LED_NUM             135    // Anzahl LEDs - 1
 #define WORLD_MIN             0 // min world index
 #define WORLD_MAX            999 //max world index
 #define DATA_PIN             6     // Daten Pin für den LED Schlauch am Arduino
@@ -61,96 +68,166 @@ CRGB leds[LED_NUM];
 RunningMedian MPUAngleSamples = RunningMedian(5);
 RunningMedian MPUWobbleSamples = RunningMedian(5);
 
+#undef min
+inline int min(int a, int b) { return ((a)<(b) ? (a) : (b)); }
+inline double min(double a, double b) { return ((a)<(b) ? (a) : (b)); }
 
+#undef max
+inline int max(int a, int b) { return ((a)<(b) ? (b) : (a)); }
+inline double max(double a, double b) { return ((a)<(b) ? (b) : (a)); }
 
 Player* player = new Player();
-std::list<Entity*> *entityList = new std::list<Entity*>;
+std::list<Entity*> *exitList = new std::list<Entity*>; //TODO: all in one list?
+std::list<Enemy*> *enemyList = new std::list<Enemy*>;
+std::list<Water*> *waterList = new std::list<Water*>;
 std::list<SpawnPoint*> *spawnList = new std::list<SpawnPoint*>;
-std::list<Entity*>::iterator it;
+std::list<Trap*> *trapList = new std::list<Trap*>;
 
+//TODO: delete lists + objects in lists
 
 void setup() {
-
   Serial.begin(9600);
   while (!Serial); // wait for connection
   // Fast LED
   FastLED.addLeds<WS2812, DATA_PIN, GRB>(leds, LED_NUM);
   FastLED.setBrightness(BRIGHTNESS);
   FastLED.setDither(1);
+  // Life LEDs
+  for(int i = 0; i<3; i++){
+      pinMode(lifeLEDs[i], OUTPUT);
+      digitalWrite(lifeLEDs[i], HIGH);
+  }
 }
 
 void initialize() {
   currentLevel = 0;
-  entityList->clear();
+  enemyList->clear();
   spawnList->clear();
-  player->setColor(CRGB::Green);
+  trapList->clear();
+  exitList->clear();
+  waterList->clear();
+  player->setColor(CRGB::Pink);
   player->setPosition(500);
   player->setLives(3);
   Serial.println("INIT");
+
 }
 
 
 void loop() {
-  tick > 100 ? tick = 0 : tick++;
-  if (millis() - timeLastInput >= TICKTIME) {
-    getInput();
-    if(abs(joystickTilt) > JOYSTICK_DEAD_ANGLE){
-        timeLastInput = millis();
-        if(state == "SCREENSAVER"){
-            loadStartMenu();
-            state = "GAME";
-        }
-    }else{
-        if(timeLastInput+TIMEOUT < millis()){
-            state = "SCREENSAVER";
-        }
-    }
-  }
+
   if(state == "INIT") {
     initialize();
     loadLevel();
   }
   if(state == "GAME") {
-    if(!attacking)
-      checkAttack();
-    if(attacking) {
-      if(--attackTicks == 0)
-      attacking = false;
-    }
-    checkCollision();
-    getInput();
-    if(!attacking)
-      player->move(joystickTilt);
-    gameTick();
-    drawGame();
+    if(attacking){
+          SFXattacking();
+        }else{
+          SFXtilt(joystickTilt);
+        }
+    if (millis() - timeLastInput >= TICKTIME) {
+      getInput();
+      checkCollision();
+      if(abs(joystickTilt) > JOYSTICK_DEAD_ANGLE){
+            timeLastInput = millis();
+            if(state == "SCREENSAVER"){
+                loadStartMenu();
+                state = "GAME";
+            }
+        }else{
+            if(timeLastInput+TIMEOUT < millis()){
+                state = "SCREENSAVER";
+            }
+        }
+        tick > 1000 ? tick = 0 : tick++;
+        timeLastInput = millis();
+      if(!attacking) {
+        checkAttack();
+      }
+      if(attacking) {
+        if(attackTicks == 0)
+          attacking = false;
+        else
+          attackTicks--;
+      }
+      if(!attacking) {
+        //Serial.println(joystickTilt);
+        player->move(joystickTilt);
+      }
+      gameTick();
+      drawGame();
+      }
   }
 }
 
 void checkAttack() {
+  //Serial.println(joystickWobbleSpeed);
+//  Serial.println(ATTACK_THRESHOLD);
+
   if(joystickWobbleSpeed > ATTACK_THRESHOLD) {
     attacking = true;
     attackTicks = attackTime;
   }
 }
 
+int checkWater() {
+  int speedAdjust = 0;
+  for(auto it=waterList->begin();it!=waterList->end();it++) {
+    if(mapLed((*it)->getPosition()) == mapLed(player->getPosition())) {
+      if((player->getPosition() == (*it)->getPosition()) ||
+         (player->getPosition() > (*it)->getPosition() && mapLed(player->getPosition()) - (*it)->getSize() < mapLed((*it)->getPosition()))) {
+           return;
+      }
+    }
+  }
+}
+
 void checkCollision() {
+  //check player attack
   if(attacking) {
-    for(it=entityList->begin();it!=entityList->end();) {
-      if((*it)->getType() == "enemy") {
-          if(mapLed(player->getPosition() + attackRange) > mapLed((*it)->getPosition())) {
-          /*  Serial.println(mapLed(player->getPosition()));
-            Serial.println(mapLed(player->getPosition() + attackRange));
-            Serial.println(mapLed((*it)->getPosition()));
-            Serial.println(mapLed((*it)->getPosition() - attackRange));*/
-            it = entityList->erase(it);
+    for(auto it=enemyList->begin();it!=enemyList->end();) {
+          if((player->getPosition() < (*it)->getPosition() && mapLed(player->getPosition()) + attackRange > mapLed((*it)->getPosition())) ||
+             (player->getPosition() > (*it)->getPosition() && mapLed(player->getPosition()) - attackRange < mapLed((*it)->getPosition()))) {
+              it = enemyList->erase(it);
+              SFXkill();
             return;
           }
         ++it;
-      } else
-        ++it;
     }
   }
-  for(it=entityList->begin();it!=entityList->end();it++) {
+
+  //check trap attack
+  for(auto it=trapList->begin();it!=trapList->end();it++) {
+    if((*it)->isActive()) {
+      // does trap attack player?
+      if((player->getPosition() < (*it)->getPosition() && mapLed(player->getPosition()) + trapSize >= mapLed((*it)->getPosition())) ||
+         (player->getPosition() > (*it)->getPosition() && mapLed(player->getPosition()) - trapSize <= mapLed((*it)->getPosition()))) {
+           handleCollision((*it));
+           return;
+         }
+         //does trap attack enemy?
+      for(auto enemy=enemyList->begin();enemy!=enemyList->end();) {
+          if(((*enemy)->getPosition() < (*it)->getPosition() && mapLed((*enemy)->getPosition()) + trapSize >= mapLed((*it)->getPosition())) ||
+             ((*enemy)->getPosition() > (*it)->getPosition() && mapLed((*enemy)->getPosition()) - trapSize <= mapLed((*it)->getPosition()))) {
+               enemy = enemyList->erase(enemy);
+               return;
+             }
+        ++enemy;
+      }
+    }
+  }
+
+  //check enemy attack
+  for(auto it=enemyList->begin();it!=enemyList->end();it++) {
+    if(mapLed((*it)->getPosition()) == mapLed(player->getPosition())) {
+      die();
+      return;
+    }
+  }
+
+  //check if exit reached
+  for(auto it=exitList->begin();it!=exitList->end();it++) {
     if(mapLed((*it)->getPosition()) == mapLed(player->getPosition())) {
       handleCollision((*it));
       return;
@@ -160,8 +237,14 @@ void checkCollision() {
 
 
 void loadLevel() {
-  entityList->clear();
+  for(int i = 0; i<3; i++){
+     digitalWrite(lifeLEDs[i], player->getLives()>i?HIGH:LOW);
+  }
+  enemyList->clear();
   spawnList->clear();
+  trapList->clear();
+  exitList->clear();
+  waterList->clear();
   switch(currentLevel) {
     case 0:
       Serial.println("Load Level 0");
@@ -169,7 +252,7 @@ void loadLevel() {
       break;
     case 1:
       Serial.println("Load Level 1");
-      loadLevelFive();
+      loadLevelOne();
       break;
     case 2:
       Serial.println("Load Level 2");
@@ -181,11 +264,27 @@ void loadLevel() {
       break;
     case 4:
       Serial.println("Load Level 4");
-      loadLevelFour();
+      loadLevelSeven();
       break;
     case 5:
       Serial.println("Load Level 5");
       loadLevelFour();
+      break;
+    case 6:
+      Serial.println("Load Level 6");
+      loadLevelFive();
+      break;
+    case 7:
+      Serial.println("Load Level 7");
+      loadLevelSix();
+      break;
+    case 8:
+      Serial.println("Load Level 8");
+      loadLevelEight();
+      break;
+    case 9:
+      Serial.println("Load Level 9");
+      loadLevelNine();
       break;
     default:
       break;
@@ -194,15 +293,22 @@ void loadLevel() {
 
 void gameTick() {
   spawnEnemies();
+  tickTraps();
   moveEnemies();
 }
 
+void tickTraps() {
+  for(auto it=trapList->begin();it!=trapList->end();it++) {
+      (*it)->setActive(tick);
+  }
+}
+
+
 void moveEnemies() {
-  for(it=entityList->begin();it!=entityList->end();it++) {
+  for(auto it=enemyList->begin();it!=enemyList->end();it++) {
     if((*it)->getType() == "enemy") {
-      Enemy* enemy = (*it);
-      enemy->move(player->getPosition(), tick);
-      (*it)->setPosition(enemy->getPosition());
+      (*it)->move(player->getPosition(), tick);
+      //(*it)->setPosition(enemy->getPosition());
     }
   }
 }
@@ -210,60 +316,122 @@ void moveEnemies() {
 void spawnEnemies() {
   for(auto it=spawnList->begin();it!=spawnList->end();it++) {
     if((*it)->spawns()) {
-      Enemy* e = new Entity((*it)->getPosition(), (*it)->getSpawnColor(), "enemy");
+      Enemy* e = new Enemy((*it)->getPosition(), (*it)->getSpawnColor(), "enemy");
       e->setChangesDirection(false);
-      entityList->push_back(e);
+      enemyList->push_back(e);
     }
   }
 }
 
 void setDifficultySettings() {
+  Serial.println("DIFFICULTY");
   if(difficulty == 0) {
-    attackRange = 100;
-    attackTime = 5;
-    spawnSpeed = 400;
+    trapSize = 3;
+    attackRange = 7;
+    attackTime = 30;
+    spawnSpeed = 175;
+    winColor = CRGB::Silver;
   } else {
-    attackRange = 50;
-    attackTime = 2;
-    spawnSpeed = 200;
+    trapSize = 5;
+    attackRange = 4;
+    attackTime = 15;
+    spawnSpeed = 125;
+    winColor = CRGB::Gold;
   }
 }
 
 void handleCollision(Entity* collObj) {
+  Serial.println(collObj->getType());
   if(collObj->getType() == "easy") {
+    SFXwin();
     difficulty = 0;
     currentLevel = 1;
+    player->setLives(3);
     setDifficultySettings();
+    showWinAnimation();
     loadLevel();
   } else if(collObj->getType() == "hard") {
+    SFXwin();
     difficulty = 1;
     currentLevel = 1;
+    player->setLives(3);
     setDifficultySettings();
+    showWinAnimation();
     loadLevel();
   } else if(collObj->getType() == "exit") {
-    currentLevel++;
-    loadLevel();
-  } else if(collObj->getType() == "enemy") {
+    if(currentLevel == 9) {
+      if(enemyList->empty()) {
+        SFXcomplete();
+        showWinAnimation();
+        showWinAnimation();
+        showWinAnimation();
+        initialize();
+      }
+    } else {
+      SFXwin();
+      player->setLives(3);
+      currentLevel++;
+      showWinAnimation();
+      loadLevel();
+    }
+  } else if(collObj->getType() == "enemy" || collObj->getType() == "trap") {
     die();
   }
 }
+
+
 
 void drawGame() {
   showLeds();
 }
 
 void die(){
+  SFXdead();
   player->setLives(player->getLives() - 1);
+  for(int i = 0; i<3; i++){
+     digitalWrite(lifeLEDs[i], player->getLives()>i?HIGH:LOW);
+  }
+  showDieAnimation();
   if(player->getLives() == 0)
     gameOver();
   else {
-    showDieAnimation();
     loadLevel();
   }
 }
 
 void showDieAnimation() {
+  FastLED.clear();
+  short playerPos = player->getPosition();
+  for(uint16_t l = 0; l < LED_NUM; l++) {
+    leds[l] = CHSV(CRGB::Violet, 255, 50);
+  }
+  for(uint16_t step = 0; step < 25; step++) {
+    leds[wrap(mapLed(playerPos) + step)] = CHSV(CRGB::Red, 255, pow(0.8, step)*255);
+    leds[wrap(mapLed(playerPos) - step)] = CHSV(CRGB::Red, 255, pow(0.8, step)*255);
+    if (step > 3) {
+      leds[wrap(mapLed(playerPos) + step + 3)] = CHSV(CRGB::Red, 255, pow(0.8, step - 2)*255);
+      leds[wrap(mapLed(playerPos) - step + 3)] = CHSV(CRGB::Red, 255, pow(0.8, step - 2)*255);
+    }
+    FastLED.show();
+    delay(50);
+  }
+}
 
+void showWinAnimation() {
+  FastLED.clear();
+  for(int i = LED_NUM - 1; i > 0; i--) {
+    leds[i] = winColor;
+    FastLED.show();
+    delay(5);
+  }
+}
+
+
+
+uint16_t wrap(uint16_t step) {
+  if(step < 0) return LED_NUM + step;
+  if(step > LED_NUM - 1) return step - LED_NUM;
+  return step;
 }
 
 void gameOver() {
@@ -273,83 +441,228 @@ void gameOver() {
 void loadStartMenu() {
   Entity* easy = new Entity(WORLD_MIN, CRGB::LightGreen, "easy");
   Entity* hard = new Entity(WORLD_MAX, CRGB::DarkRed, "hard");
-  entityList->push_back(easy);
-  entityList->push_back(hard);
+  exitList->push_back(easy);
+  exitList->push_back(hard);
   state = "GAME";
 }
 
 void loadLevelOne() {
   player->setPosition(WORLD_MIN);
-  Enemy* e = new Entity(WORLD_MAX, CRGB::Red, "enemy");
-  entityList->push_back(e);
+  Enemy* e = new Entity(WORLD_MAX/2, CRGB::Blue, "enemy");
+  e->setChangesDirection(false);
+  enemyList->push_back(e);
   Entity* exit = new Entity(WORLD_MAX, CRGB::Gold, "exit");
-  entityList->push_back(exit);
+  exitList->push_back(exit);
+  state = "GAME";
 }
 
 void loadLevelTwo() {
   player->setPosition(WORLD_MIN);
   SpawnPoint* sp = new Entity(WORLD_MAX, CRGB::Red, "spawn");
   sp->setSpawnSpeed(spawnSpeed);
-  sp->setSpawnColor(CRGB::Gray);
+  sp->setSpawnColor(CRGB::Blue);
   spawnList->push_back(sp);
   Entity* exit = new Entity(WORLD_MAX, CRGB::Gold, "exit");
-  entityList->push_back(exit);
+  exitList->push_back(exit);
 }
 
 void loadLevelThree() {
   player->setPosition(WORLD_MAX / 2);
-  Enemy* e = new Entity(WORLD_MAX, CRGB::Red, "enemy");
-  entityList->push_back(e);
-  Enemy* e2 = new Entity(WORLD_MIN, CRGB::Red, "enemy");
-  entityList->push_back(e2);
+  Enemy* e = new Enemy(WORLD_MAX, CRGB::Blue, "enemy");
+  enemyList->push_back(e);
+  Enemy* e2 = new Enemy(WORLD_MIN, CRGB::Blue, "enemy");
+  enemyList->push_back(e2);
   Entity* exit = new Entity(WORLD_MAX, CRGB::Gold, "exit");
-  entityList->push_back(exit);
+  exitList->push_back(exit);
 }
 
 void loadLevelFour() {
   player->setPosition(WORLD_MIN);
-  Enemy* e = new Entity(WORLD_MAX, CRGB::Red, "enemy");
+  Enemy* e = new Enemy(WORLD_MAX, CRGB::Blue, "enemy");
   e->setChangesDirection(true);
-  entityList->push_back(e);
+  enemyList->push_back(e);
   Entity* exit = new Entity(WORLD_MAX, CRGB::Gold, "exit");
-  entityList->push_back(exit);
+  exitList->push_back(exit);
 }
 
 
 void loadLevelFive() {
   player->setPosition(WORLD_MAX / 2);
-  SpawnPoint* sp = new Entity(WORLD_MAX-10, CRGB::DarkRed, "spawn");
+  SpawnPoint* sp = new SpawnPoint(WORLD_MAX-10, CRGB::DarkRed, "spawn");
   sp->setSpawnSpeed(spawnSpeed);
-  sp->setSpawnColor(CRGB::Red);
+  sp->setSpawnColor(CRGB::Blue);
   spawnList->push_back(sp);
-  SpawnPoint* sp2 = new Entity(WORLD_MIN, CRGB::DarkGray, "spawn");
-  sp2->setSpawnSpeed(spawnSpeed);
-  sp2->setSpawnColor(CRGB::Gray);
+  SpawnPoint* sp2 = new SpawnPoint(WORLD_MIN, CRGB::DarkRed, "spawn");
+  sp2->setSpawnSpeed(spawnSpeed - 50);
+  sp2->setSpawnColor(CRGB::Blue);
   spawnList->push_back(sp2);
   Entity* exit = new Entity(WORLD_MAX, CRGB::Gold, "exit");
-  entityList->push_back(exit);
+  exitList->push_back(exit);
+}
+
+
+void loadLevelSix() {
+  player->setPosition(WORLD_MAX / 2);
+  SpawnPoint* sp = new SpawnPoint(WORLD_MAX-10, CRGB::DarkRed, "spawn");
+  sp->setSpawnSpeed(spawnSpeed);
+  sp->setSpawnColor(CRGB::Blue);
+  spawnList->push_back(sp);
+  SpawnPoint* sp2 = new SpawnPoint(WORLD_MIN, CRGB::DarkGray, "spawn");
+  sp2->setSpawnSpeed(spawnSpeed - 50);
+  sp2->setSpawnColor(CRGB::Blue);
+  spawnList->push_back(sp2);
+  Enemy* e = new Entity(WORLD_MAX, CRGB::Blue, "enemy");
+  e->setChangesDirection(true);
+  enemyList->push_back(e);
+  Enemy* e2 = new Entity(WORLD_MIN, CRGB::Blue, "enemy");
+  e2->setChangesDirection(true);
+  enemyList->push_back(e2);
+  Entity* exit = new Entity(WORLD_MAX, CRGB::Gold, "exit");
+  exitList->push_back(exit);
+}
+
+void loadLevelSeven() {
+  player->setPosition(WORLD_MIN);
+  Enemy* e = new Enemy(WORLD_MAX, CRGB::Blue, "enemy");
+  e->setChangesDirection(false);
+  enemyList->push_back(e);
+  Trap* t = new Trap(WORLD_MAX/2, CRGB::DarkGray, "trap");
+  t->setInactiveColor(CRGB::Orange);
+  t->setActiveColor(CRGB::Red);
+  t->setSize(trapSize);
+  trapList->push_back(t);
+  Trap* t2 = new Trap(WORLD_MAX * 0.75, CRGB::DarkGray, "trap");
+  t2->setInactiveColor(CRGB::Orange);
+  t2->setActiveColor(CRGB::Red);
+  t2->setSize(trapSize);
+  trapList->push_back(t2);
+  Entity* exit = new Entity(WORLD_MAX, CRGB::Gold, "exit");
+  exitList->push_back(exit);
+}
+
+void loadLevelEight() {
+  player->setPosition(WORLD_MIN);
+  SpawnPoint* sp = new SpawnPoint(WORLD_MAX-10, CRGB::DarkRed, "spawn");
+  sp->setSpawnSpeed(spawnSpeed);
+  sp->setSpawnColor(CRGB::Blue);
+  spawnList->push_back(sp);
+  SpawnPoint* sp2 = new SpawnPoint(WORLD_MIN, CRGB::DarkRed, "spawn");
+  sp2->setSpawnSpeed(spawnSpeed + 200);
+  sp2->setSpawnColor(CRGB::Blue);
+  spawnList->push_back(sp2);
+  Trap* t = new Trap(WORLD_MAX/4, CRGB::DarkGray, "trap");
+  t->setInactiveColor(CRGB::Orange);
+  t->setActiveColor(CRGB::Red);
+  t->setSize(trapSize);
+  trapList->push_back(t);
+  Trap* t2 = new Trap(WORLD_MAX/3, CRGB::DarkGray, "trap");
+  t2->setInactiveColor(CRGB::Orange);
+  t2->setActiveColor(CRGB::Red);
+  t2->setSize(trapSize);
+  trapList->push_back(t2);
+  Trap* t3 = new Trap(WORLD_MAX/2, CRGB::DarkGray, "trap");
+  t3->setInactiveColor(CRGB::Orange);
+  t3->setActiveColor(CRGB::Red);
+  t3->setSize(trapSize);
+  trapList->push_back(t3);
+  Entity* exit = new Entity(WORLD_MAX, CRGB::Gold, "exit");
+  enemyList->push_back(exit);
+}
+
+void loadLevelNine() {
+  player->setPosition(WORLD_MAX / 2);
+  SpawnPoint* sp = new SpawnPoint(WORLD_MAX-10, CRGB::DarkRed, "spawn");
+  sp->setSpawnSpeed(spawnSpeed - 25);
+  sp->setSpawnColor(CRGB::Blue);
+  spawnList->push_back(sp);
+  SpawnPoint* sp2 = new SpawnPoint(WORLD_MIN, CRGB::DarkGray, "spawn");
+  sp2->setSpawnSpeed(spawnSpeed - 75);
+  sp2->setSpawnColor(CRGB::Blue);
+  spawnList->push_back(sp2);
+  Enemy* e = new Enemy(WORLD_MIN, CRGB::Blue, "enemy");
+  e->setChangesDirection(true);
+  e->setMoves(false);
+  enemyList->push_back(e);
+  Enemy* e2 = new Enemy(WORLD_MAX-10, CRGB::Blue, "enemy");
+  e2->setChangesDirection(true);
+  e2->setMoves(false);
+  enemyList->push_back(e2);
+  Entity* exit = new Entity(WORLD_MAX, CRGB::Gold, "exit");
+  exitList->push_back(exit);
 }
 
 
 
 void showLeds() {
   FastLED.clear();
-  for(it=entityList->begin();it!=entityList->end();it++) {
-    leds[mapLed((*it)->getPosition())] = (*it)->getColor();
-  }
-  for(auto it=spawnList->begin();it!=spawnList->end();it++) {
-    leds[mapLed((*it)->getPosition())] = (*it)->getColor();
-  }
+  showWater();
+  showSpawners();
+  showExits();
+  showTraps();
+  showEnemies();
   showPlayer();
   FastLED.show();
 }
 
+void showWater() {
+  for(auto it=waterList->begin();it!=waterList->end();it++) {
+      for(int i = 0; i <= (*it)->getSize(); i++) {
+        if((*it)->getDirection() == 1) {
+          if(tick % i == 0)
+            leds[mapLed((*it)->getPosition())+i] = (*it)->getColor();
+        } else {
+          if(tick % i == 0)
+            leds[mapLed((*it)->getPosition()) + (*it)->getSize() - i] = (*it)->getColor();
+        }
+    }
+  }
+}
+
+void showExits() {
+  for(auto it=exitList->begin();it!=exitList->end();it++) {
+    leds[mapLed((*it)->getPosition())] = (*it)->getColor();
+  }
+}
+
+void showTraps() {
+  for(auto it=trapList->begin();it!=trapList->end();it++) {
+    if(!(*it)->isActive() || tick % 4 > 2) {
+      leds[mapLed((*it)->getPosition())] = (*it)->getColor();
+      for(int i = 1; i < trapSize+1; i++) {
+        leds[mapLed((*it)->getPosition())+i] = (*it)->getColor();
+        leds[mapLed((*it)->getPosition())-i] = (*it)->getColor();
+      }
+    }
+  }
+}
+
+void showSpawners() {
+  for(auto it=spawnList->begin();it!=spawnList->end();it++) {
+    leds[mapLed((*it)->getPosition())] = (*it)->getColor();
+  }
+}
+
+void showEnemies() {
+  for(auto it=enemyList->begin();it!=enemyList->end();it++) {
+    leds[mapLed((*it)->getPosition())] = (*it)->getColor();
+  }
+}
+
 void showPlayer() {
   leds[mapLed(player->getPosition())] = player->getColor();
-  if(attacking) {
+  if(attacking && tick % 4 > 2) {
     for(int i = 1; i < attackRange; i++) {
-        leds[mapLed(player->getPosition()+i)] = CRGB::White;
-        leds[mapLed(player->getPosition()-i)] = CRGB::White;
+      CRGB color;
+      if (i == attackRange - 1)
+        color = CRGB::Yellow;
+      else
+        color = CRGB(189,183,107);
+        if(mapLed(player->getPosition())+i < LED_NUM) {
+          leds[mapLed(player->getPosition())+i] = color;
+        }
+        if(mapLed(player->getPosition())-i > 0) {
+          leds[mapLed(player->getPosition())-i] = color;
+        }
     }
   }
 }
@@ -387,4 +700,43 @@ void getInput() {
     }
     joystickWobbleSpeed = abs(MPUWobbleSamples.getHighest());
     //Serial.println(joystickTilt);
+}
+
+
+
+// ---------------------------------
+// -------------- SFX --------------
+// ---------------------------------
+void SFXtilt(int amount){
+    int f = map(abs(amount), 0, 90, 80, 900)+random8(100);
+    //if(playerPositionModifier < 0) f -= 500;
+    //if(playerPositionModifier > 0) f += 200;
+    toneAC(f, min(min(abs(amount)/9, 5), 10));
+
+}
+void SFXattacking(){
+    int freq = map(sin(millis()/2.0)*1000.0, -1000, 1000, 500, 600);
+    if(random8(5)== 0){
+      freq *= 3;
+    }
+    toneAC(freq, 10);
+}
+void SFXdead(){
+    int freq = max(1000 - (millis()-700), 10);
+    freq += random8(200);
+    int vol = max(10 - 700/200, 0);
+    toneAC(freq, 10);
+}
+void SFXkill(){
+    toneAC(2000, 10, 1000, true);
+}
+void SFXwin(){
+    int freq = (1000)/3.0;
+    freq += map(sin(millis()/20.0)*1000.0, -1000, 1000, 0, 20);
+    int vol = 10;//max(10 - (millis()-stageStartTime)/200, 0);
+    toneAC(freq, 10);
+}
+
+void SFXcomplete(){
+    noToneAC();
 }

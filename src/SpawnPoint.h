@@ -15,19 +15,23 @@ class SpawnPoint: public Entity {
     short getSpawnTick();
     void setSpawnColor(CRGB::HTMLColorCode color);
     CRGB::HTMLColorCode getSpawnColor();
+    SpawnPoint(int position, CRGB::HTMLColorCode color, char* type);
+
 
 };
 
-
+SpawnPoint::SpawnPoint(int position, CRGB::HTMLColorCode color, char* type) : Entity(position, color, type) {
+  _spawnSpeed = 0;
+  _spawnTick = 10;
+}
 void SpawnPoint::setSpawnSpeed(short speed) {
   _spawnSpeed = speed;
-  _spawnTick = speed;
+  _spawnTick = speed / 2;
 }
 
 
 bool SpawnPoint::spawns() {
-  Serial.println(_spawnTick);
-  if(--_spawnTick == 0) {
+  if(--_spawnTick <= 0) {
     _spawnTick = _spawnSpeed;
     return true;
   } else {

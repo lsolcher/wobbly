@@ -8,24 +8,39 @@ class Enemy: public Entity {
     //int position;
     bool _changesDirection = false;
     int _speed;
+    bool _moves;
   public:
     int move(int playerPosition, int tick);
     void setChangesDirection(bool changesDirection);
-    //int getPosition();
-    //void setPosition(int position);
+    Enemy(int position, CRGB::HTMLColorCode color, char* type);
+    void setMoves(bool moves);
+
 };
 
+Enemy::Enemy(int position, CRGB::HTMLColorCode color, char* type) : Entity(position, color, type) {
+  _changesDirection = false;
+  _moves = true;
+}
+
 int Enemy::move(int playerPosition, int tick) {
-  int newPos;
-  if(_changesDirection && tick > 60)
-    (playerPosition < _position) ? newPos = _position++ : newPos = _position--;
-  else
-    (playerPosition < _position) ? newPos = _position-- : newPos = _position++;
-  return newPos;
+  if(_moves) {
+    int newPos;
+    if(_changesDirection && tick % 100 > 60)
+      (playerPosition < _position) ? newPos = _position++ : newPos = _position--;
+    else
+      (playerPosition < _position) ? newPos = _position-- : newPos = _position++;
+    return newPos;
+  } else {
+    return _position;
+  }
 }
 
 void Enemy::setChangesDirection(bool changesDirection) {
-  _changesDirection = true;
+  _changesDirection = changesDirection;
+}
+
+void Enemy::setMoves(bool moves) {
+  _moves = moves;
 }
 
 

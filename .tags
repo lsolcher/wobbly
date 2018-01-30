@@ -267,6 +267,7 @@ Coral	.\lib\FastLED\pixeltypes.h	/^        Coral=0xFF7F50,$/;"	e	enum:CRGB::__an
 CornflowerBlue	.\lib\FastLED\pixeltypes.h	/^        CornflowerBlue=0x6495ED,$/;"	e	enum:CRGB::__anon45
 Cornsilk	.\lib\FastLED\pixeltypes.h	/^        Cornsilk=0xFFF8DC,$/;"	e	enum:CRGB::__anon45
 Crimson	.\lib\FastLED\pixeltypes.h	/^        Crimson=0xDC143C,$/;"	e	enum:CRGB::__anon45
+CurrentProjectSetting	.\src\.vs\ProjectSettings.json	/^  "CurrentProjectSetting": "x86-Debug"$/;"	f
 Cyan	.\lib\FastLED\pixeltypes.h	/^        Cyan=0x00FFFF,$/;"	e	enum:CRGB::__anon45
 D1	.\lib\FastLED\platforms\arm\common\m0clockless.h	213;"	d
 D1	.\lib\FastLED\platforms\avr\clockless_trinket.h	74;"	d
@@ -381,12 +382,14 @@ EVERY_N_SECONDS	.\lib\FastLED\lib8tion.h	1109;"	d
 EVERY_N_SECONDS_I	.\lib\FastLED\lib8tion.h	1110;"	d
 EWait	.\lib\FastLED\platforms\arm\k20\fastspi_arm_k20.h	/^	enum EWait { PRE, POST, NONE };$/;"	g	class:ARMHardwareSPIOutput
 EWait	.\lib\FastLED\platforms\arm\k66\fastspi_arm_k66.h	/^	enum EWait { PRE, POST, NONE };$/;"	g	class:ARMHardwareSPIOutput
+Enemy	.\src\Enemy.h	/^Enemy::Enemy(int position, CRGB::HTMLColorCode color, char* type) : Entity(position, color, type) {$/;"	f	class:Enemy
 Enemy	.\src\Enemy.h	/^class Enemy: public Entity {$/;"	c
 Entire_Display_On_Cmd	.\lib\GOFi2cOLED\GOFi2cOLED.h	42;"	d
 Entire_Display_On_Resume_Cmd	.\lib\GOFi2cOLED\GOFi2cOLED.h	41;"	d
 Entity	.\src\Entity.h	/^Entity::Entity() {$/;"	f	class:Entity
 Entity	.\src\Entity.h	/^Entity::Entity(int position, CRGB::HTMLColorCode color, char* type) {$/;"	f	class:Entity
 Entity	.\src\Entity.h	/^class Entity {$/;"	c
+ExpandedNodes	.\src\.vs\VSWorkspaceState.json	/^  "ExpandedNodes": [$/;"	f
 F	.\lib\FastLED\lib8tion.h	/^  T f:F;$/;"	m	class:q
 F	.\lib\MPU6050\MPU6050_6Axis_MotionApps20.h	57;"	d
 F	.\lib\MPU6050\MPU6050_9Axis_MotionApps41.h	57;"	d
@@ -1274,6 +1277,7 @@ Plaid	.\lib\FastLED\pixeltypes.h	/^        Plaid=0xCC5533,$/;"	e	enum:CRGB::__an
 Player	.\src\Player.h	/^class Player: public Entity {$/;"	c
 Plum	.\lib\FastLED\pixeltypes.h	/^        Plum=0xDDA0DD,$/;"	e	enum:CRGB::__anon45
 PowderBlue	.\lib\FastLED\pixeltypes.h	/^        PowderBlue=0xB0E0E6,$/;"	e	enum:CRGB::__anon45
+PreviewInSolutionExplorer	.\src\.vs\VSWorkspaceState.json	/^  "PreviewInSolutionExplorer": false$/;"	f
 Purple	.\lib\FastLED\pixeltypes.h	/^        Purple=0x800080,$/;"	e	enum:CRGB::__anon45
 QADD7_ARM_DSP_ASM	.\lib\FastLED\lib8tion.h	193;"	d
 QADD7_C	.\lib\FastLED\lib8tion.h	191;"	d
@@ -1456,6 +1460,7 @@ SlaveAddress	.\lib\GOFi2cOLED\GOFi2cOLED.h	/^uint8_t SlaveAddress;              
 Snow	.\lib\FastLED\pixeltypes.h	/^        Snow=0xFFFAFA,$/;"	e	enum:CRGB::__anon45
 SodiumVapor	.\lib\FastLED\color.h	/^   SodiumVapor=0xFFD1B2 \/* 0 K, 255, 209, 178 *\/,$/;"	e	enum:__anon25
 SoftwareSPIOutput	.\lib\FastLED\fastspi.h	/^class SoftwareSPIOutput : public AVRSoftwareSPIOutput<_DATA_PIN, _CLOCK_PIN, _SPI_CLOCK_DIVIDER> {};$/;"	c
+SpawnPoint	.\src\SpawnPoint.h	/^SpawnPoint::SpawnPoint(int position, CRGB::HTMLColorCode color, char* type) : Entity(position, color, type) {$/;"	f	class:SpawnPoint
 SpawnPoint	.\src\SpawnPoint.h	/^class SpawnPoint: public Entity {$/;"	c
 SpringGreen	.\lib\FastLED\pixeltypes.h	/^        SpringGreen=0x00FF7F,$/;"	e	enum:CRGB::__anon45
 StandardFluorescent	.\lib\FastLED\color.h	/^   StandardFluorescent=0xF4FFFA \/* 0 K, 244, 255, 250 *\/,$/;"	e	enum:__anon25
@@ -1559,6 +1564,9 @@ Tan	.\lib\FastLED\pixeltypes.h	/^        Tan=0xD2B48C,$/;"	e	enum:CRGB::__anon45
 Teal	.\lib\FastLED\pixeltypes.h	/^        Teal=0x008080,$/;"	e	enum:CRGB::__anon45
 Thistle	.\lib\FastLED\pixeltypes.h	/^        Thistle=0xD8BFD8,$/;"	e	enum:CRGB::__anon45
 Tomato	.\lib\FastLED\pixeltypes.h	/^        Tomato=0xFF6347,$/;"	e	enum:CRGB::__anon45
+Trap	.\src\Lava.h	/^class Trap: public Entity {$/;"	c
+Trap	.\src\Trap.h	/^Trap::Trap(int position, CRGB::HTMLColorCode color, char* type) : Entity(position, color, type) {$/;"	f	class:Trap
+Trap	.\src\Trap.h	/^class Trap: public Entity {$/;"	c
 Tungsten100W	.\lib\FastLED\color.h	/^   Tungsten100W=0xFFD6AA \/* 2850 K, 255, 214, 170 *\/,$/;"	e	enum:__anon25
 Tungsten40W	.\lib\FastLED\color.h	/^   Tungsten40W=0xFFC58F \/* 2600 K, 255, 197, 143 *\/,$/;"	e	enum:__anon25
 Turquoise	.\lib\FastLED\pixeltypes.h	/^        Turquoise=0x40E0D0,$/;"	e	enum:CRGB::__anon45
@@ -1654,6 +1662,8 @@ WS2813_PORTD	.\lib\FastLED\FastLED.h	/^	WS2813_PORTD,$/;"	e	enum:EBlockChipsets
 WS2813_PORTDC	.\lib\FastLED\FastLED.h	/^	WS2813_PORTDC,$/;"	e	enum:EBlockChipsets
 WS2852	.\lib\FastLED\FastLED.h	/^template<uint8_t DATA_PIN, EOrder RGB_ORDER> class WS2852 : public WS2812Controller800Khz<DATA_PIN, RGB_ORDER> {};$/;"	c
 WarmFluorescent	.\lib\FastLED\color.h	/^   WarmFluorescent=0xFFF4E5 \/* 0 K, 255, 244, 229 *\/,$/;"	e	enum:__anon25
+Water	.\src\Water.h	/^Water::Water(int position, CRGB::HTMLColorCode color, char* type) : Entity(position, color, type) {$/;"	f	class:Water
+Water	.\src\Water.h	/^class Water: public Entity {$/;"	c
 Wheat	.\lib\FastLED\pixeltypes.h	/^        Wheat=0xF5DEB3,$/;"	e	enum:CRGB::__anon45
 White	.\lib\FastLED\pixeltypes.h	/^        White=0xFFFFFF,$/;"	e	enum:CRGB::__anon45
 WhiteSmoke	.\lib\FastLED\pixeltypes.h	/^        WhiteSmoke=0xF5F5F5,$/;"	e	enum:CRGB::__anon45
@@ -2978,6 +2988,8 @@ __unique_copy	.\lib\avr-stl\include\stl_algo.h	/^inline _OutputIter __unique_cop
 __upper_bound	.\lib\avr-stl\include\stl_algo.h	/^_ForwardIter __upper_bound(_ForwardIter __first, _ForwardIter __last,$/;"	f
 __value_type	.\lib\avr-stl\include\stl_iterator_base.h	/^__value_type(const _Iter&)$/;"	f
 __value_type_type_definition_requirement_violation	.\lib\avr-stl\include\concept_checks.h	/^struct __value_type_type_definition_requirement_violation {$/;"	s
+_active	.\src\Trap.h	/^    bool _active;$/;"	m	class:Trap
+_activeColor	.\src\Trap.h	/^    CRGB::HTMLColorCode _activeColor;$/;"	m	class:Trap
 _ar	.\lib\RunningMedian\RunningMedian.h	/^  float * _ar;$/;"	m	class:RunningMedian
 _ar	.\lib\RunningMedian\RunningMedian.h	/^  float _ar[MEDIAN_MAX_SIZE];$/;"	m	class:RunningMedian
 _changesDirection	.\src\Enemy.h	/^    bool _changesDirection = false;$/;"	m	class:Enemy
@@ -3019,12 +3031,14 @@ _dc	.\lib\FastLED\platforms\avr\clockless_trinket.h	/^template<> __attribute__((
 _dc	.\lib\FastLED\platforms\avr\clockless_trinket.h	/^template<int CYCLES> __attribute__((always_inline)) inline void _dc(register uint8_t & loopvar) {$/;"	f
 _dc_AVR	.\lib\FastLED\platforms\avr\clockless_trinket.h	/^template<int _LOOP, int PAD> __attribute__((always_inline)) inline void _dc_AVR(register uint8_t & loopvar) {$/;"	f
 _delaycycles_AVR	.\lib\FastLED\fastled_delay.h	/^template<int LOOP, int PAD> inline void _delaycycles_AVR() {$/;"	f
+_direction	.\src\Water.h	/^    bool _direction; \/\/0 == down, 1 == up$/;"	m	class:Water
 _flushed	.\lib\Adafruit_NeoPixel\examples\StrandtestBLE\BLESerial.h	/^    unsigned long _flushed;$/;"	m	class:BLESerial
 _frame_cnt	.\lib\FastLED\FastLED.cpp	/^uint32_t _frame_cnt=0;$/;"	v
 _gammaTable	.\lib\Adafruit_NeoPixel\Adafruit_NeoPixel.cpp	/^static const uint8_t PROGMEM _gammaTable[] = { _G3_ _G3_ _G3_ _G3_ }; \/\/ 256$/;"	v	file:
 _getCycleCount	.\lib\Adafruit_NeoPixel\esp8266.c	/^static inline uint32_t _getCycleCount(void) {$/;"	f	file:
 _height	.\lib\GOFi2cOLED\GOFi2cOLED.h	/^uint8_t  _width, _height; \/\/ dependent on rotation$/;"	m	class:GOFi2cOLED
 _idx	.\lib\RunningMedian\RunningMedian.h	/^  uint8_t _idx;$/;"	m	class:RunningMedian
+_inactiveColor	.\src\Trap.h	/^    CRGB::HTMLColorCode _inactiveColor;$/;"	m	class:Trap
 _init	.\lib\FastLED\fastpin.h	/^	static void _init() {$/;"	f	class:FastPin
 _init	.\lib\FastLED\fastpin.h	/^	void _init() {$/;"	f	class:Pin
 _init	.\lib\FastLED\platforms\arm\k20\octows2811_controller.h	/^  void _init(int nLeds) {$/;"	f	class:COctoWS2811Controller
@@ -3032,6 +3046,7 @@ _init	.\lib\FastLED\platforms\arm\k20\ws2812serial_controller.h	/^  void _init(i
 _instance	.\lib\Adafruit_NeoPixel\examples\StrandtestBLE\BLESerial.cpp	/^BLESerial* BLESerial::_instance = NULL;$/;"	m	class:BLESerial	file:
 _instance	.\lib\Adafruit_NeoPixel\examples\StrandtestBLE\BLESerial.h	/^    static BLESerial* _instance;$/;"	m	class:BLESerial
 _lives	.\src\Player.h	/^    short _lives = 3;$/;"	m	class:Player
+_moves	.\src\Enemy.h	/^    bool _moves;$/;"	m	class:Enemy
 _p	.\lib\RunningMedian\RunningMedian.h	/^  uint8_t * _p;$/;"	m	class:RunningMedian
 _p	.\lib\RunningMedian\RunningMedian.h	/^  uint8_t _p[MEDIAN_MAX_SIZE];$/;"	m	class:RunningMedian
 _position	.\src\Entity.h	/^  int _position;$/;"	m	class:Entity
@@ -3045,6 +3060,9 @@ _rxNameDescriptor	.\lib\Adafruit_NeoPixel\examples\StrandtestBLE\BLESerial.h	/^ 
 _rxTail	.\lib\Adafruit_NeoPixel\examples\StrandtestBLE\BLESerial.h	/^    size_t _rxTail;$/;"	m	class:BLESerial
 _sineTable	.\lib\Adafruit_NeoPixel\Adafruit_NeoPixel.cpp	/^static const uint8_t PROGMEM _sineTable[] = { _S3_ _S3_ _S3_ _S3_ }; \/\/ 256$/;"	v	file:
 _size	.\lib\RunningMedian\RunningMedian.h	/^  uint8_t _size;$/;"	m	class:RunningMedian
+_size	.\src\Lava.h	/^    short _size;$/;"	m	class:Trap
+_size	.\src\Trap.h	/^    short _size;$/;"	m	class:Trap
+_size	.\src\Water.h	/^    uint8_t _size; \/\/gets bigger depending on size$/;"	m	class:Water
 _sorted	.\lib\RunningMedian\RunningMedian.h	/^  boolean _sorted;$/;"	m	class:RunningMedian
 _spawnColor	.\src\SpawnPoint.h	/^    CRGB::HTMLColorCode _spawnColor;$/;"	m	class:SpawnPoint
 _spawnSpeed	.\src\SpawnPoint.h	/^    short _spawnSpeed = 0;$/;"	m	class:SpawnPoint
@@ -4121,6 +4139,7 @@ getDMPInt3Status	.\lib\MPU6050\MPU6050.cpp	/^bool MPU6050::getDMPInt3Status() {$
 getDMPInt4Status	.\lib\MPU6050\MPU6050.cpp	/^bool MPU6050::getDMPInt4Status() {$/;"	f	class:MPU6050
 getDMPInt5Status	.\lib\MPU6050\MPU6050.cpp	/^bool MPU6050::getDMPInt5Status() {$/;"	f	class:MPU6050
 getDeviceID	.\lib\MPU6050\MPU6050.cpp	/^uint8_t MPU6050::getDeviceID() {$/;"	f	class:MPU6050
+getDirection	.\src\Water.h	/^bool Water::getDirection() {$/;"	f	class:Water
 getDither	.\lib\FastLED\controller.h	/^    inline uint8_t getDither() { return m_DitherMode; }$/;"	f	class:CLEDController
 getElapsed	.\lib\FastLED\lib8tion.h	/^    timeType getElapsed() { return getTime() - mPrevTrigger; }$/;"	f	class:CEveryNTimePeriods
 getElement	.\lib\RunningMedian\RunningMedian.cpp	/^float RunningMedian::getElement(const uint8_t n)$/;"	f	class:RunningMedian
@@ -4223,6 +4242,7 @@ getScalars	.\lib\FastLED\platforms\arm\k20\fastspi_arm_k20.h	/^template <int VAL
 getScalars	.\lib\FastLED\platforms\arm\k66\fastspi_arm_k66.h	/^template <int VAL> void getScalars(uint32_t & preScalar, uint32_t & scalar, uint32_t & dbl) {$/;"	f
 getScalars	.\lib\FastLED\platforms\arm\kl26\fastspi_arm_kl26.h	/^template <int VAL> void getScalars(uint8_t & sppr, uint8_t & spr) {$/;"	f
 getSize	.\lib\RunningMedian\RunningMedian.h	/^  uint8_t getSize() { return _size; };  \/\/ returns size of internal buffer$/;"	f	class:RunningMedian
+getSize	.\src\Water.h	/^uint8_t Water::getSize() {$/;"	f	class:Water
 getSlate4InputByte	.\lib\MPU6050\MPU6050.cpp	/^uint8_t MPU6050::getSlate4InputByte() {$/;"	f	class:MPU6050
 getSlave0FIFOEnabled	.\lib\MPU6050\MPU6050.cpp	/^bool MPU6050::getSlave0FIFOEnabled() {$/;"	f	class:MPU6050
 getSlave0Nack	.\lib\MPU6050\MPU6050.cpp	/^bool MPU6050::getSlave0Nack() {$/;"	f	class:MPU6050
@@ -4649,6 +4669,7 @@ int_type	.\lib\avr-stl\include\stl_iterator.h	/^  typedef typename _Traits::int_
 int_type	.\lib\avr-stl\include\stl_iterator.h	/^  typedef typename _Traits::int_type       int_type;$/;"	t	class:ostreambuf_iterator
 iota	.\lib\avr-stl\include\stl_numeric.h	/^iota(_ForwardIter __first, _ForwardIter __last, _Tp __value)$/;"	f
 is800KHz	.\lib\Adafruit_NeoPixel\Adafruit_NeoPixel.h	/^    is800KHz,      \/\/ ...true if 800 KHz pixels$/;"	m	class:Adafruit_NeoPixel
+isActive	.\src\Trap.h	/^bool Trap::isActive() {$/;"	f	class:Trap
 isSelected	.\lib\FastLED\fastpin.h	/^	virtual bool isSelected() { return (*mPort & mPinMask) == mPinMask; }$/;"	f	class:Pin
 is_POD_type	.\lib\avr-stl\include\type_traits.h	/^   typedef __false_type    is_POD_type;$/;"	t	struct:__type_traits
 is_POD_type	.\lib\avr-stl\include\type_traits.h	/^   typedef __true_type    is_POD_type;$/;"	t	struct:__type_traits
@@ -6227,6 +6248,9 @@ setAccelXSelfTest	.\lib\MPU6050\MPU6050.cpp	/^void MPU6050::setAccelXSelfTest(bo
 setAccelYSelfTest	.\lib\MPU6050\MPU6050.cpp	/^void MPU6050::setAccelYSelfTest(bool enabled) {$/;"	f	class:MPU6050
 setAccelZSelfTest	.\lib\MPU6050\MPU6050.cpp	/^void MPU6050::setAccelZSelfTest(bool enabled) {$/;"	f	class:MPU6050
 setAccelerometerPowerOnDelay	.\lib\MPU6050\MPU6050.cpp	/^void MPU6050::setAccelerometerPowerOnDelay(uint8_t delay) {$/;"	f	class:MPU6050
+setActive	.\src\Entity.h	/^  virtual void setActive(int tick) {};$/;"	f	class:Entity
+setActive	.\src\Trap.h	/^void Trap::setActive(int tick) {$/;"	f	class:Trap
+setActiveColor	.\src\Trap.h	/^void Trap::setActiveColor(CRGB::HTMLColorCode color){$/;"	f	class:Trap
 setAuxVDDIOLevel	.\lib\MPU6050\MPU6050.cpp	/^void MPU6050::setAuxVDDIOLevel(uint8_t level) {$/;"	f	class:MPU6050
 setBrightness	.\lib\Adafruit_NeoPixel\Adafruit_NeoPixel.cpp	/^void Adafruit_NeoPixel::setBrightness(uint8_t b) {$/;"	f	class:Adafruit_NeoPixel
 setBrightness	.\lib\FastLED\FastLED.h	/^	void setBrightness(uint8_t scale) { m_Scale = scale; }$/;"	f	class:CFastLED
@@ -6246,6 +6270,7 @@ setDMPConfig1	.\lib\MPU6050\MPU6050.cpp	/^void MPU6050::setDMPConfig1(uint8_t co
 setDMPConfig2	.\lib\MPU6050\MPU6050.cpp	/^void MPU6050::setDMPConfig2(uint8_t config) {$/;"	f	class:MPU6050
 setDMPEnabled	.\lib\MPU6050\MPU6050.cpp	/^void MPU6050::setDMPEnabled(bool enabled) {$/;"	f	class:MPU6050
 setDeviceID	.\lib\MPU6050\MPU6050.cpp	/^void MPU6050::setDeviceID(uint8_t id) {$/;"	f	class:MPU6050
+setDirection	.\src\Water.h	/^void Water::setDirection(bool dir) {$/;"	f	class:Water
 setDither	.\lib\FastLED\FastLED.cpp	/^void CFastLED::setDither(uint8_t ditherMode)  {$/;"	f	class:CFastLED
 setDither	.\lib\FastLED\controller.h	/^    inline CLEDController & setDither(uint8_t ditherMode = BINARY_DITHER) { m_DitherMode = ditherMode; return *this; }$/;"	f	class:CLEDController
 setExternalFrameSync	.\lib\MPU6050\MPU6050.cpp	/^void MPU6050::setExternalFrameSync(uint8_t sync) {$/;"	f	class:MPU6050
@@ -6266,6 +6291,7 @@ setHorizontalScrollProperties	.\lib\GOFi2cOLED\GOFi2cOLED.cpp	/^void GOFi2cOLED:
 setHue	.\lib\FastLED\pixeltypes.h	/^	inline CRGB& setHue (uint8_t hue) __attribute__((always_inline))$/;"	f	struct:CRGB
 setI2CBypassEnabled	.\lib\MPU6050\MPU6050.cpp	/^void MPU6050::setI2CBypassEnabled(bool enabled) {$/;"	f	class:MPU6050
 setI2CMasterModeEnabled	.\lib\MPU6050\MPU6050.cpp	/^void MPU6050::setI2CMasterModeEnabled(bool enabled) {$/;"	f	class:MPU6050
+setInactiveColor	.\src\Trap.h	/^void Trap::setInactiveColor(CRGB::HTMLColorCode color){$/;"	f	class:Trap
 setInput	.\lib\FastLED\fastpin.h	/^	inline static void setInput() { _init(); pinMode(PIN, INPUT); }$/;"	f	class:FastPin
 setInput	.\lib\FastLED\fastpin.h	/^	inline static void setInput() { }$/;"	f	class:FastPin
 setInput	.\lib\FastLED\fastpin.h	/^	inline void setInput() { \/* TODO: Set pin input *\/ }$/;"	f	class:Pin
@@ -6298,6 +6324,7 @@ setMemoryStartAddress	.\lib\MPU6050\MPU6050.cpp	/^void MPU6050::setMemoryStartAd
 setMotionDetectionCounterDecrement	.\lib\MPU6050\MPU6050.cpp	/^void MPU6050::setMotionDetectionCounterDecrement(uint8_t decrement) {$/;"	f	class:MPU6050
 setMotionDetectionDuration	.\lib\MPU6050\MPU6050.cpp	/^void MPU6050::setMotionDetectionDuration(uint8_t duration) {$/;"	f	class:MPU6050
 setMotionDetectionThreshold	.\lib\MPU6050\MPU6050.cpp	/^void MPU6050::setMotionDetectionThreshold(uint8_t threshold) {$/;"	f	class:MPU6050
+setMoves	.\src\Enemy.h	/^void Enemy::setMoves(bool moves) {$/;"	f	class:Enemy
 setMultiMasterEnabled	.\lib\MPU6050\MPU6050.cpp	/^void MPU6050::setMultiMasterEnabled(bool enabled) {$/;"	f	class:MPU6050
 setNormalDisplay	.\lib\GOFi2cOLED\GOFi2cOLED.cpp	/^void GOFi2cOLED::setNormalDisplay()$/;"	f	class:GOFi2cOLED
 setOTPBankValid	.\lib\MPU6050\MPU6050.cpp	/^void MPU6050::setOTPBankValid(bool enabled) {$/;"	f	class:MPU6050
@@ -6336,6 +6363,9 @@ setSelect	.\lib\FastLED\platforms\arm\sam\fastspi_arm_sam.h	/^	void setSelect(Se
 setSelect	.\lib\FastLED\platforms\avr\fastspi_avr.h	/^	void setSelect(Selectable *pSelect) { m_pSelect = pSelect; }$/;"	f	class:AVRHardwareSPIOutput
 setSelect	.\lib\FastLED\platforms\avr\fastspi_avr.h	/^	void setSelect(Selectable *pSelect) { m_pSelect = pSelect; }$/;"	f	class:AVRUSART0SPIOutput
 setSelect	.\lib\FastLED\platforms\avr\fastspi_avr.h	/^	void setSelect(Selectable *pSelect) { m_pSelect = pSelect; }$/;"	f	class:AVRUSART1SPIOutput
+setSize	.\src\Lava.h	/^void Trap::setSize(short size) {$/;"	f	class:Trap
+setSize	.\src\Trap.h	/^void Trap::setSize(short size) {$/;"	f	class:Trap
+setSize	.\src\Water.h	/^void Water::setSize(uint8_t size) {$/;"	f	class:Water
 setSlave0FIFOEnabled	.\lib\MPU6050\MPU6050.cpp	/^void MPU6050::setSlave0FIFOEnabled(bool enabled) {$/;"	f	class:MPU6050
 setSlave1FIFOEnabled	.\lib\MPU6050\MPU6050.cpp	/^void MPU6050::setSlave1FIFOEnabled(bool enabled) {$/;"	f	class:MPU6050
 setSlave2FIFOEnabled	.\lib\MPU6050\MPU6050.cpp	/^void MPU6050::setSlave2FIFOEnabled(bool enabled) {$/;"	f	class:MPU6050
