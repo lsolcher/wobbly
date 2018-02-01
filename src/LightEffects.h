@@ -33,7 +33,7 @@ class LightEffects {
     void addPoint(uint16_t origin,CRGB::HTMLColorCode color);
     void addWaveAnimation(uint16_t origin, uint16_t size, CRGB::HTMLColorCode endWaveColor, CRGB::HTMLColorCode middleWaveColor);
     void showSnakeAnimation(bool direction, CRGB::HTMLColorCode Color);
-    void showCrippleAnimation(int center, int steps, CRGB::HTMLColorCode crippleColor, CRGB::HTMLColorCode bgColor);
+    void showCrippleAnimation(int center, uint16_t steps, CRGB::HTMLColorCode crippleColor, CRGB::HTMLColorCode bgColor);
 };
 
 

@@ -127,9 +127,9 @@ void loop() {
   effects.addWaveAnimation(mapLed(900), 4, CRGB::Yellow, CRGB::Cyan);
   //CRGB(189,183,107);
 
-  effects.show();*/
-  //effects.showCrippleAnimation(player->getPosition(), 10, CRGB::Red, CRGB::Violet);
-  */
+  effects.show();
+  delay(50);*/
+  //effects.showCrippleAnimation(mapLed(500), 5, CRGB::Red, CRGB::Violet);
 
   if(state == "INIT") {
     initialize();
@@ -173,7 +173,7 @@ void loop() {
       gameTick();
       drawGame();
       }
-  }*/
+  }
 }
 
 void checkAttack() {
