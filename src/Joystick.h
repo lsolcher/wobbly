@@ -21,8 +21,9 @@ class Joystick {
     RunningMedian MPUWobbleSamples = RunningMedian(5);
   public:
     Joystick();
-     void getInput();
-     bool isAttacking();
+    void getInput();
+    int getJoystickTilt();
+    bool isAttacking();
 };
 
 

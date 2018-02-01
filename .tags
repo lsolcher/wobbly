@@ -28,7 +28,6 @@ ARMHardwareSPIOutput	.\lib\FastLED\platforms\arm\kl26\fastspi_arm_kl26.h	/^  ARM
 ARMHardwareSPIOutput	.\lib\FastLED\platforms\arm\kl26\fastspi_arm_kl26.h	/^class ARMHardwareSPIOutput {$/;"	c
 ARM_HARDWARE_SPI	.\lib\FastLED\platforms\arm\kl26\fastspi_arm_kl26.h	83;"	d
 ASM_VARS	.\lib\FastLED\platforms\avr\clockless_trinket.h	172;"	d
-ATTACK_THRESHOLD	.\src\Joystick.cpp	7;"	d	file:
 ATTACK_THRESHOLD	.\src\Joystick.h	6;"	d
 AVG15	.\lib\FastLED\noise.cpp	26;"	d	file:
 AVG15	.\lib\FastLED\noise.cpp	30;"	d	file:
@@ -651,14 +650,11 @@ InputPin	.\lib\FastLED\fastpin.h	/^	InputPin(int pin) : Pin(pin) { setInput(); }
 InputPin	.\lib\FastLED\fastpin.h	/^class InputPin : public Pin {$/;"	c
 Ivory	.\lib\FastLED\pixeltypes.h	/^        Ivory=0xFFFFF0,$/;"	e	enum:CRGB::__anon45
 JMPLOOP2	.\lib\FastLED\platforms\avr\clockless_trinket.h	312;"	d
-JOYSTICK_DEAD_ANGLE	.\src\Joystick.cpp	8;"	d	file:
 JOYSTICK_DEAD_ANGLE	.\src\Joystick.h	7;"	d
-JOYSTICK_DIRECTION	.\src\Joystick.cpp	6;"	d	file:
 JOYSTICK_DIRECTION	.\src\Joystick.h	5;"	d
 JOYSTICK_H	.\src\Joystick.h	2;"	d
-JOYSTICK_ORIENTATION	.\src\Joystick.cpp	5;"	d	file:
 JOYSTICK_ORIENTATION	.\src\Joystick.h	4;"	d
-Joystick	.\src\Joystick.cpp	/^class Joystick {$/;"	c	file:
+Joystick	.\src\Joystick.cpp	/^Joystick::Joystick() { \/\/define constructor$/;"	f	class:Joystick
 Joystick	.\src\Joystick.h	/^class Joystick {$/;"	c
 K170	.\lib\FastLED\hsv2rgb.cpp	275;"	d	file:
 K171	.\lib\FastLED\hsv2rgb.cpp	274;"	d	file:
@@ -1084,9 +1080,7 @@ MPU6050_WHO_AM_I_LENGTH	.\lib\MPU6050\MPU6050.h	393;"	d
 MPU6050_XG_FIFO_EN_BIT	.\lib\MPU6050\MPU6050.h	219;"	d
 MPU6050_YG_FIFO_EN_BIT	.\lib\MPU6050\MPU6050.h	220;"	d
 MPU6050_ZG_FIFO_EN_BIT	.\lib\MPU6050\MPU6050.h	221;"	d
-MPUAngleSamples	.\src\Joystick.cpp	/^RunningMedian MPUAngleSamples = RunningMedian(5);$/;"	v
 MPUAngleSamples	.\src\Joystick.h	/^    RunningMedian MPUAngleSamples = RunningMedian(5);$/;"	m	class:Joystick
-MPUWobbleSamples	.\src\Joystick.cpp	/^RunningMedian MPUWobbleSamples = RunningMedian(5);$/;"	v
 MPUWobbleSamples	.\src\Joystick.h	/^    RunningMedian MPUWobbleSamples = RunningMedian(5);$/;"	m	class:Joystick
 MS_COUNTER	.\lib\FastLED\platforms\arm\k20\led_sysdefs_arm_k20.h	35;"	d
 MS_COUNTER	.\lib\FastLED\platforms\arm\k66\led_sysdefs_arm_k66.h	35;"	d
@@ -3253,11 +3247,8 @@ avr_malloc	.\lib\avr-stl\include\stl_alloc.h	103;"	d
 avr_realloc	.\lib\avr-stl\include\stl_alloc.h	/^static void *avr_realloc(void *ptr_,size_t size_)$/;"	f
 avr_realloc	.\lib\avr-stl\include\stl_alloc.h	105;"	d
 avrstl	.\lib\avr-stl\include\avr_config.h	/^namespace avrstl {$/;"	n
-ax	.\src\Joystick.cpp	/^int16_t ax, ay, az;$/;"	v
 ax	.\src\Joystick.h	/^    int16_t ax, ay, az;$/;"	m	class:Joystick
-ay	.\src\Joystick.cpp	/^int16_t ax, ay, az;$/;"	v
 ay	.\src\Joystick.h	/^    int16_t ax, ay, az;$/;"	m	class:Joystick
-az	.\src\Joystick.cpp	/^int16_t ax, ay, az;$/;"	v
 az	.\src\Joystick.h	/^    int16_t ax, ay, az;$/;"	m	class:Joystick
 b	.\lib\FastLED\bitswap.h	/^    sub4 b;$/;"	m	struct:__anon22::__anon23
 b	.\lib\FastLED\colorutils.h	/^        uint8_t b;$/;"	m	struct:__anon27::__anon28
@@ -4200,7 +4191,7 @@ getFullScaleGyroRange	.\lib\MPU6050\MPU6050.cpp	/^uint8_t MPU6050::getFullScaleG
 getHighest	.\lib\RunningMedian\RunningMedian.h	/^  float getHighest() { return getSortedElement(_cnt - 1); };$/;"	f	class:RunningMedian
 getI2CBypassEnabled	.\lib\MPU6050\MPU6050.cpp	/^bool MPU6050::getI2CBypassEnabled() {$/;"	f	class:MPU6050
 getI2CMasterModeEnabled	.\lib\MPU6050\MPU6050.cpp	/^bool MPU6050::getI2CMasterModeEnabled() {$/;"	f	class:MPU6050
-getInput	.\src\Joystick.cpp	/^  static void getInput() {$/;"	f	class:Joystick
+getInput	.\src\Joystick.cpp	/^void Joystick::getInput() {$/;"	f	class:Joystick
 getIntDMPEnabled	.\lib\MPU6050\MPU6050.cpp	/^bool MPU6050::getIntDMPEnabled() {$/;"	f	class:MPU6050
 getIntDMPStatus	.\lib\MPU6050\MPU6050.cpp	/^bool MPU6050::getIntDMPStatus() {$/;"	f	class:MPU6050
 getIntDataReadyEnabled	.\lib\MPU6050\MPU6050.cpp	/^bool MPU6050::getIntDataReadyEnabled() {$/;"	f	class:MPU6050
@@ -4223,6 +4214,7 @@ getInterruptDrive	.\lib\MPU6050\MPU6050.cpp	/^bool MPU6050::getInterruptDrive() 
 getInterruptLatch	.\lib\MPU6050\MPU6050.cpp	/^bool MPU6050::getInterruptLatch() {$/;"	f	class:MPU6050
 getInterruptLatchClear	.\lib\MPU6050\MPU6050.cpp	/^bool MPU6050::getInterruptLatchClear() {$/;"	f	class:MPU6050
 getInterruptMode	.\lib\MPU6050\MPU6050.cpp	/^bool MPU6050::getInterruptMode() {$/;"	f	class:MPU6050
+getJoystickTilt	.\src\Joystick.cpp	/^  int Joystick::getJoystickTilt() {$/;"	f	class:Joystick
 getLastTriggerTime	.\lib\FastLED\lib8tion.h	/^    timeType getLastTriggerTime() { return mPrevTrigger; }$/;"	f	class:CEveryNTimePeriods
 getLives	.\src\Player.h	/^short Player::getLives() {$/;"	f	class:Player
 getLostArbitration	.\lib\MPU6050\MPU6050.cpp	/^bool MPU6050::getLostArbitration() {$/;"	f	class:MPU6050
@@ -4396,11 +4388,8 @@ grad8	.\lib\FastLED\noise.cpp	/^static int8_t inline __attribute__((always_inlin
 greater	.\lib\avr-stl\include\stl_function.h	/^struct greater : public binary_function<_Tp,_Tp,bool> $/;"	s
 greater_equal	.\lib\avr-stl\include\stl_function.h	/^struct greater_equal : public binary_function<_Tp,_Tp,bool>$/;"	s
 green	.\lib\FastLED\pixeltypes.h	/^                uint8_t green;$/;"	m	union:CRGB::__anon40::__anon41::__anon43
-gx	.\src\Joystick.cpp	/^int16_t gx, gy, gz;$/;"	v
 gx	.\src\Joystick.h	/^    int16_t gx, gy, gz;$/;"	m	class:Joystick
-gy	.\src\Joystick.cpp	/^int16_t gx, gy, gz;$/;"	v
 gy	.\src\Joystick.h	/^    int16_t gx, gy, gz;$/;"	m	class:Joystick
-gz	.\src\Joystick.cpp	/^int16_t gx, gy, gz;$/;"	v
 gz	.\src\Joystick.h	/^    int16_t gx, gy, gz;$/;"	m	class:Joystick
 h	.\lib\FastLED\pixeltypes.h	/^		        uint8_t h; };$/;"	m	union:CHSV::__anon34::__anon35::__anon36
 has	.\lib\FastLED\controller.h	/^        __attribute__((always_inline)) inline bool has(int n) {$/;"	f	struct:PixelController
@@ -4714,7 +4703,7 @@ int_type	.\lib\avr-stl\include\stl_iterator.h	/^  typedef typename _Traits::int_
 iota	.\lib\avr-stl\include\stl_numeric.h	/^iota(_ForwardIter __first, _ForwardIter __last, _Tp __value)$/;"	f
 is800KHz	.\lib\Adafruit_NeoPixel\Adafruit_NeoPixel.h	/^    is800KHz,      \/\/ ...true if 800 KHz pixels$/;"	m	class:Adafruit_NeoPixel
 isActive	.\src\Trap.h	/^bool Trap::isActive() {$/;"	f	class:Trap
-isAttacking	.\src\Joystick.cpp	/^  static bool isAttacking() {$/;"	f	class:Joystick
+isAttacking	.\src\Joystick.cpp	/^  bool Joystick::isAttacking() {$/;"	f	class:Joystick
 isSelected	.\lib\FastLED\fastpin.h	/^	virtual bool isSelected() { return (*mPort & mPinMask) == mPinMask; }$/;"	f	class:Pin
 is_POD_type	.\lib\avr-stl\include\type_traits.h	/^   typedef __false_type    is_POD_type;$/;"	t	struct:__type_traits
 is_POD_type	.\lib\avr-stl\include\type_traits.h	/^   typedef __true_type    is_POD_type;$/;"	t	struct:__type_traits
@@ -4821,11 +4810,7 @@ iterator_traits	.\lib\avr-stl\include\stl_iterator_base.h	/^struct iterator_trai
 iterator_traits	.\lib\avr-stl\include\stl_iterator_base.h	/^struct iterator_traits<_Tp*> {$/;"	s
 iterator_traits	.\lib\avr-stl\include\stl_iterator_base.h	/^struct iterator_traits<const _Tp*> {$/;"	s
 iterator_type	.\lib\avr-stl\include\stl_iterator.h	/^  typedef _Iterator iterator_type;$/;"	t	class:reverse_iterator
-joystickTilt	.\src\Joystick.cpp	/^  static int joystickTilt;              \/\/ Variable speichert Winkel des Joysticks: <=0  1. input (bei uns: rückwärts gehen) >=0  2. input (bei uns: vorwärts gehen)$/;"	m	class:Joystick	file:
-joystickTilt	.\src\Joystick.cpp	/^int Joystick::joystickTilt = 0;$/;"	m	class:Joystick	file:
 joystickTilt	.\src\Joystick.h	/^    int joystickTilt;$/;"	m	class:Joystick
-joystickWobbleSpeed	.\src\Joystick.cpp	/^  static int joystickWobbleSpeed;       \/\/ Variable speichert max. Geschwindigkeit des Joysticks beim wobblen.$/;"	m	class:Joystick	file:
-joystickWobbleSpeed	.\src\Joystick.cpp	/^int Joystick::joystickWobbleSpeed = 0;$/;"	m	class:Joystick	file:
 joystickWobbleSpeed	.\src\Joystick.h	/^    int joystickWobbleSpeed;$/;"	m	class:Joystick
 just8bits	.\lib\FastLED\bitswap.h	/^} just8bits;$/;"	t	typeref:union:__anon19
 key_comp	.\lib\avr-stl\include\stl_map.h	/^  key_compare key_comp() const { return _M_t.key_comp(); }$/;"	f	class:map
@@ -5139,7 +5124,6 @@ mosi	.\lib\FastLED\platforms\arm\nrf51\fastspi_arm_nrf51.h	/^    uint32_t mosi;$
 move	.\lib\avr-stl\include\char_traits.h	/^  static _CharT* move(_CharT* __s1, const _CharT* __s2, size_t __n) {$/;"	f	class:__char_traits_base
 move	.\src\Enemy.h	/^int Enemy::move(int playerPosition, int tick) {$/;"	f	class:Enemy
 move	.\src\Player.h	/^void Player::move(int input) {$/;"	f	class:Player
-mpu6050	.\src\Joystick.cpp	/^MPU6050 mpu6050;$/;"	v
 mpu6050	.\src\Joystick.h	/^    MPU6050 mpu6050;$/;"	m	class:Joystick
 mul8	.\lib\FastLED\lib8tion\math8.h	/^LIB8STATIC_ALWAYS_INLINE uint8_t mul8( uint8_t i, uint8_t j)$/;"	f
 multimap	.\lib\avr-stl\include\stl_multimap.h	/^  explicit multimap(const _Compare& __comp,$/;"	f	class:multimap
