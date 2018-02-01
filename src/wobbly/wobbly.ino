@@ -2,11 +2,9 @@
 #pragma once
 #include "FastLED.h"
 #include "I2Cdev.h"
-#include "MPU6050.h"
 #include "Wire.h"
 #include "toneAC.h"
 #include "iSin.h"
-#include "RunningMedian.h"
 #include "ArduinoSTL.h"
 #include <list>
 #include "Player.h"
@@ -15,14 +13,9 @@
 #include "Trap.h"
 #include "Water.h"
 #include "LightEffects.h"
+#include "Joystick.h"
 
 //TODO: Wasser, Endgegner, EndAnimation, Sound
-
-
-
-MPU6050 mpu6050;
-int16_t ax, ay, az;
-int16_t gx, gy, gz;
 
 // Game setup
 #define TICKTIME  20
@@ -49,16 +42,6 @@ CRGB::HTMLColorCode winColor;
 #define MIN_FRAME_INTERVAL  16    // Min interval bevor neuer Frame gezeichnet wird  33ms = 30fps / 16ms = 63fps
 #define GRAVITY              1     // 0/1 Schwerkraft benutzen (LED Streifen geht an der Wand hoch: 1)
 
-
-
-// Joystick
-
-#define JOYSTICK_ORIENTATION 1     // [0,1,2] legt die Orientierung des Joysticks fest (in welche Richtung Steuern, in welche Wackeln)
-#define JOYSTICK_DIRECTION   0      // 0/1 Bewegungsrichtung ändern (hoch/runter)
-#define ATTACK_THRESHOLD     30000 // Ab welchem Threshold (Geschwindigkeit) des Joysticks wird ein Angriff ausgelöst
-#define JOYSTICK_DEAD_ANGLE    5     // Winkel der ignoriert wird TODO
-int joystickTilt = 0;              // Variable speichert Winkel des Joysticks
-int joystickWobbleSpeed = 0;            // Variable speichert max. Geschwindigkeit des Joysticks
 char* state = "INIT";
 long timeLastFrame = 0;
 long timeLastInput = 0;
@@ -66,8 +49,6 @@ long timeLastInput = 0;
 
 
 CRGB leds[LED_NUM];
-RunningMedian MPUAngleSamples = RunningMedian(5);
-RunningMedian MPUWobbleSamples = RunningMedian(5);
 
 #undef min
 inline int min(int a, int b) { return ((a)<(b) ? (a) : (b)); }
@@ -139,12 +120,12 @@ void loop() {
     if(attacking){
           SFXattacking();
         }else{
-          SFXtilt(joystickTilt);
+          SFXtilt(Joystick::joystickTilt);
         }
     if (millis() - timeLastInput >= TICKTIME) {
-      getInput();
+      Joystick::getInput();
       checkCollision();
-      if(abs(joystickTilt) > JOYSTICK_DEAD_ANGLE){
+      if(abs(Joystick::joystickTilt) > JOYSTICK_DEAD_ANGLE){
             timeLastInput = millis();
             if(state == "SCREENSAVER"){
                 loadStartMenu();
@@ -167,8 +148,8 @@ void loop() {
           attackTicks--;
       }
       if(!attacking) {
-        //Serial.println(joystickTilt);
-        player->move(joystickTilt);
+        //Serial.println(Joystick::joystickTilt);
+        player->move(Joystick::joystickTilt);
       }
       gameTick();
       drawGame();
@@ -177,10 +158,10 @@ void loop() {
 }
 
 void checkAttack() {
-  //Serial.println(joystickWobbleSpeed);
+  //Serial.println(Joystick::joystickWobbleSpeed);
 //  Serial.println(ATTACK_THRESHOLD);
 
-  if(joystickWobbleSpeed > ATTACK_THRESHOLD) {
+  if(Joystick::joystickWobbleSpeed > ATTACK_THRESHOLD) {
     attacking = true;
     attackTicks = attackTime;
   }
@@ -638,36 +619,6 @@ void showPlayer() {
 
 int mapLed(int position) {
   return constrain((int)map(position, 0, 1000, 0, LED_NUM-1), 0, LED_NUM-1);
-}
-
-
-// ---------------------------------
-// ----------- JOYSTICK ------------
-// ---------------------------------
-void getInput() {
-    // This is respeedonsible for the spieler movement speedeed and angreifend.
-    // You can replace it with anything you want that passes a -90>+90 value to joystickTilt
-    // and any value to joystickWackelSpeed that is greater than ANGRIFF_THRESHOLD (defined at start)
-    // For example you could use 3 momentery buttons:
-        // if(digitalRead(leftButtonPinNumber) == HIGH) joystickTilt = -90;
-        // if(digitalRead(rightButtonPinNumber) == HIGH) joystickTilt = 90;
-        // if(digitalRead(attackButtonPinNumber) == HIGH) joystickWackelSpeed = ANGRIFF_THRESHOLD;
-
-    mpu6050.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
-    int a = (JOYSTICK_ORIENTATION == 0?ax:(JOYSTICK_ORIENTATION == 1?ay:az))/166;
-    int g = (JOYSTICK_ORIENTATION == 0?gx:(JOYSTICK_ORIENTATION == 1?gy:gz));
-    if(abs(a) < JOYSTICK_DEAD_ANGLE) a = 0;
-    if(a > 0) a -= JOYSTICK_DEAD_ANGLE;
-    if(a < 0) a += JOYSTICK_DEAD_ANGLE;
-    MPUAngleSamples.add(a);
-    MPUWobbleSamples.add(g);
-
-    joystickTilt = MPUAngleSamples.getMedian();
-    if(JOYSTICK_DIRECTION == 1) {
-        joystickTilt = 0-joystickTilt;
-    }
-    joystickWobbleSpeed = abs(MPUWobbleSamples.getHighest());
-    //Serial.println(joystickTilt);
 }
 
 
