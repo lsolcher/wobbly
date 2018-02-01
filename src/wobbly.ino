@@ -14,6 +14,7 @@
 #include "SpawnPoint.h"
 #include "Trap.h"
 #include "Water.h"
+#include "LightEffects.h"
 
 //TODO: Wasser, Endgegner, EndAnimation, Sound
 
@@ -76,6 +77,7 @@ inline double min(double a, double b) { return ((a)<(b) ? (a) : (b)); }
 inline int max(int a, int b) { return ((a)<(b) ? (b) : (a)); }
 inline double max(double a, double b) { return ((a)<(b) ? (b) : (a)); }
 
+LightEffects effects;// = new LightEffects();
 Player* player = new Player();
 std::list<Entity*> *exitList = new std::list<Entity*>; //TODO: all in one list?
 std::list<Enemy*> *enemyList = new std::list<Enemy*>;
@@ -89,9 +91,9 @@ void setup() {
   Serial.begin(9600);
   while (!Serial); // wait for connection
   // Fast LED
-  FastLED.addLeds<WS2812, DATA_PIN, GRB>(leds, LED_NUM);
-  FastLED.setBrightness(BRIGHTNESS);
-  FastLED.setDither(1);
+  effects.setBrightness(50);
+
+
   // Life LEDs
   for(int i = 0; i<3; i++){
       pinMode(lifeLEDs[i], OUTPUT);
@@ -115,6 +117,19 @@ void initialize() {
 
 
 void loop() {
+  //LightEffects effects;
+  /*effects.clear();
+  //tick++;
+  effects.addWaterAnimation(mapLed(100), 8, 0, CRGB::Blue);
+  effects.addWaterAnimation(mapLed(200), 50, 1, CRGB::Blue);
+  effects.addTrapAnimation(mapLed(500), 5, CRGB::Red, CRGB::Orange, tick);
+  effects.addPoint(mapLed(900), CRGB::Gold);
+  effects.addWaveAnimation(mapLed(900), 4, CRGB::Yellow, CRGB::Cyan);
+  //CRGB(189,183,107);
+
+  effects.show();*/
+  //effects.showCrippleAnimation(player->getPosition(), 10, CRGB::Red, CRGB::Violet);
+  */
 
   if(state == "INIT") {
     initialize();
@@ -158,7 +173,7 @@ void loop() {
       gameTick();
       drawGame();
       }
-  }
+  }*/
 }
 
 void checkAttack() {
@@ -400,38 +415,11 @@ void die(){
 }
 
 void showDieAnimation() {
-  FastLED.clear();
-  short playerPos = player->getPosition();
-  for(uint16_t l = 0; l < LED_NUM; l++) {
-    leds[l] = CHSV(CRGB::Violet, 255, 50);
-  }
-  for(uint16_t step = 0; step < 25; step++) {
-    leds[wrap(mapLed(playerPos) + step)] = CHSV(CRGB::Red, 255, pow(0.8, step)*255);
-    leds[wrap(mapLed(playerPos) - step)] = CHSV(CRGB::Red, 255, pow(0.8, step)*255);
-    if (step > 3) {
-      leds[wrap(mapLed(playerPos) + step + 3)] = CHSV(CRGB::Red, 255, pow(0.8, step - 2)*255);
-      leds[wrap(mapLed(playerPos) - step + 3)] = CHSV(CRGB::Red, 255, pow(0.8, step - 2)*255);
-    }
-    FastLED.show();
-    delay(50);
-  }
+  effects.showCrippleAnimation(player->getPosition(), 20, CRGB::Red, CRGB::Violet);
 }
 
 void showWinAnimation() {
-  FastLED.clear();
-  for(int i = LED_NUM - 1; i > 0; i--) {
-    leds[i] = winColor;
-    FastLED.show();
-    delay(5);
-  }
-}
-
-
-
-uint16_t wrap(uint16_t step) {
-  if(step < 0) return LED_NUM + step;
-  if(step > LED_NUM - 1) return step - LED_NUM;
-  return step;
+  effects.showSnakeAnimation(1, winColor);
 }
 
 void gameOver() {
@@ -594,25 +582,23 @@ void loadLevelNine() {
 
 
 void showLeds() {
-  FastLED.clear();
+  effects.clear();
   showWater();
   showSpawners();
   showExits();
   showTraps();
   showEnemies();
   showPlayer();
-  FastLED.show();
+  effects.show();
 }
 
 void showWater() {
   for(auto it=waterList->begin();it!=waterList->end();it++) {
       for(int i = 0; i <= (*it)->getSize(); i++) {
         if((*it)->getDirection() == 1) {
-          if(tick % i == 0)
-            leds[mapLed((*it)->getPosition())+i] = (*it)->getColor();
+          effects.addWaterAnimation(mapLed((*it)->getPosition()), 4, 1, (*it)->getColor());
         } else {
-          if(tick % i == 0)
-            leds[mapLed((*it)->getPosition()) + (*it)->getSize() - i] = (*it)->getColor();
+          effects.addWaterAnimation(mapLed((*it)->getPosition()), 4, 0, (*it)->getColor());
         }
     }
   }
@@ -620,50 +606,32 @@ void showWater() {
 
 void showExits() {
   for(auto it=exitList->begin();it!=exitList->end();it++) {
-    leds[mapLed((*it)->getPosition())] = (*it)->getColor();
+    effects.addPoint(mapLed((*it)->getPosition()), (*it)->getColor());
   }
 }
 
 void showTraps() {
   for(auto it=trapList->begin();it!=trapList->end();it++) {
-    if(!(*it)->isActive() || tick % 4 > 2) {
-      leds[mapLed((*it)->getPosition())] = (*it)->getColor();
-      for(int i = 1; i < trapSize+1; i++) {
-        leds[mapLed((*it)->getPosition())+i] = (*it)->getColor();
-        leds[mapLed((*it)->getPosition())-i] = (*it)->getColor();
-      }
-    }
+    effects.addTrapAnimation(mapLed((*it)->getPosition()), 4, (*it)->getColor(), tick, (*it)->isActive());
   }
 }
 
 void showSpawners() {
   for(auto it=spawnList->begin();it!=spawnList->end();it++) {
-    leds[mapLed((*it)->getPosition())] = (*it)->getColor();
+    effects.addPoint(mapLed((*it)->getPosition()), (*it)->getColor());
   }
 }
 
 void showEnemies() {
   for(auto it=enemyList->begin();it!=enemyList->end();it++) {
-    leds[mapLed((*it)->getPosition())] = (*it)->getColor();
+    effects.addPoint(mapLed((*it)->getPosition()), (*it)->getColor());
   }
 }
 
 void showPlayer() {
-  leds[mapLed(player->getPosition())] = player->getColor();
+  effects.addPoint(mapLed(player->getPosition()), player->getColor());
   if(attacking && tick % 4 > 2) {
-    for(int i = 1; i < attackRange; i++) {
-      CRGB color;
-      if (i == attackRange - 1)
-        color = CRGB::Yellow;
-      else
-        color = CRGB(189,183,107);
-        if(mapLed(player->getPosition())+i < LED_NUM) {
-          leds[mapLed(player->getPosition())+i] = color;
-        }
-        if(mapLed(player->getPosition())-i > 0) {
-          leds[mapLed(player->getPosition())-i] = color;
-        }
-    }
+    effects.addWaveAnimation(player->getPosition(), 4, CRGB::Yellow, CRGB::Cyan);
   }
 }
 
