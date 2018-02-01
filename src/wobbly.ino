@@ -59,6 +59,7 @@ inline int max(int a, int b) { return ((a)<(b) ? (b) : (a)); }
 inline double max(double a, double b) { return ((a)<(b) ? (b) : (a)); }
 
 LightEffects effects;// = new LightEffects();
+Joystick joystick;
 Player* player = new Player();
 std::list<Entity*> *exitList = new std::list<Entity*>; //TODO: all in one list?
 std::list<Enemy*> *enemyList = new std::list<Enemy*>;

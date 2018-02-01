@@ -28,7 +28,8 @@ ARMHardwareSPIOutput	.\lib\FastLED\platforms\arm\kl26\fastspi_arm_kl26.h	/^  ARM
 ARMHardwareSPIOutput	.\lib\FastLED\platforms\arm\kl26\fastspi_arm_kl26.h	/^class ARMHardwareSPIOutput {$/;"	c
 ARM_HARDWARE_SPI	.\lib\FastLED\platforms\arm\kl26\fastspi_arm_kl26.h	83;"	d
 ASM_VARS	.\lib\FastLED\platforms\avr\clockless_trinket.h	172;"	d
-ATTACK_THRESHOLD	.\src\wobbly.ino.cpp	61;"	d	file:
+ATTACK_THRESHOLD	.\src\Joystick.cpp	7;"	d	file:
+ATTACK_THRESHOLD	.\src\Joystick.h	6;"	d
 AVG15	.\lib\FastLED\noise.cpp	26;"	d	file:
 AVG15	.\lib\FastLED\noise.cpp	30;"	d	file:
 AVG15	.\lib\FastLED\noise.cpp	51;"	d	file:
@@ -69,7 +70,6 @@ BLEND8_C	.\lib\FastLED\lib8tion.h	214;"	d
 BLESerial	.\lib\Adafruit_NeoPixel\examples\StrandtestBLE\BLESerial.cpp	/^BLESerial::BLESerial(unsigned char req, unsigned char rdy, unsigned char rst) :$/;"	f	class:BLESerial
 BLESerial	.\lib\Adafruit_NeoPixel\examples\StrandtestBLE\BLESerial.h	/^class BLESerial : public BLEPeripheral, public Stream$/;"	c
 BRG	.\lib\FastLED\pixeltypes.h	/^	BRG=0201,$/;"	e	enum:EOrder
-BRIGHTNESS	.\src\wobbly.ino.cpp	50;"	d	file:
 BRLOOP1	.\lib\FastLED\platforms\avr\clockless_trinket.h	314;"	d
 Beige	.\lib\FastLED\pixeltypes.h	/^        Beige=0xF5F5DC,$/;"	e	enum:CRGB::__anon45
 Bisque	.\lib\FastLED\pixeltypes.h	/^        Bisque=0xFFE4C4,$/;"	e	enum:CRGB::__anon45
@@ -283,7 +283,6 @@ D3	.\lib\FastLED\platforms\avr\clockless_trinket.h	76;"	d
 DADVANCE	.\lib\FastLED\platforms\avr\clockless_trinket.h	322;"	d
 DATAPIN	.\src\LightEffects.h	6;"	d
 DATA_NOP	.\lib\FastLED\fastspi_types.h	/^class DATA_NOP {$/;"	c
-DATA_PIN	.\src\wobbly.ino.cpp	49;"	d	file:
 DATA_RATE_KHZ	.\lib\FastLED\fastspi.h	15;"	d
 DATA_RATE_MHZ	.\lib\FastLED\fastspi.h	14;"	d
 DCOUNT2	.\lib\FastLED\platforms\avr\clockless_trinket.h	310;"	d
@@ -312,7 +311,6 @@ DINT	.\lib\FastLED\platforms\avr\clockless_trinket.h	73;"	d
 DINTPIN	.\lib\FastLED\platforms\avr\clockless_trinket.h	72;"	d
 DIR	.\lib\FastLED\platforms\arm\nrf51\fastpin_arm_nrf51.h	/^  __IO uint32_t  DIR;                               \/*!< Direction of GPIO pins.                                               *\/$/;"	m	struct:__anon51
 DIRCLR	.\lib\FastLED\platforms\arm\nrf51\fastpin_arm_nrf51.h	/^  __IO uint32_t  DIRCLR;                            \/*!< DIR clear register.                                                   *\/$/;"	m	struct:__anon51
-DIRECTION	.\src\wobbly.ino.cpp	51;"	d	file:
 DIRSET	.\lib\FastLED\platforms\arm\nrf51\fastpin_arm_nrf51.h	/^  __IO uint32_t  DIRSET;                            \/*!< DIR set register.                                                     *\/$/;"	m	struct:__anon51
 DISABLE_DITHER	.\lib\FastLED\controller.h	24;"	d
 DITHER	.\lib\FastLED\platforms\avr\clockless_trinket.h	16;"	d
@@ -558,7 +556,6 @@ GOFi2cOLED_Inverse_Display_Cmd	.\lib\GOFi2cOLED\GOFi2cOLED.h	44;"	d
 GOFi2cOLED_Normal_Display_Cmd	.\lib\GOFi2cOLED\GOFi2cOLED.h	43;"	d
 GOFi2cOLED_WIDTH	.\lib\GOFi2cOLED\GOFi2cOLED.h	33;"	d
 GOFi2cOLED_data_H	.\lib\GOFi2cOLED\GOFi2cOLED.h	19;"	d
-GRAVITY	.\src\wobbly.ino.cpp	53;"	d	file:
 GRB	.\lib\FastLED\pixeltypes.h	/^	GRB=0102,$/;"	e	enum:EOrder
 GW6205	.\lib\FastLED\FastLED.h	/^template<uint8_t DATA_PIN, EOrder RGB_ORDER> class GW6205 : public GW6205Controller800Khz<DATA_PIN, RGB_ORDER> {};$/;"	c
 GW6205Controller400Khz	.\lib\FastLED\chipsets.h	/^class GW6205Controller400Khz : public ClocklessController<DATA_PIN, 6 * FMUL, 7 * FMUL, 6 * FMUL, RGB_ORDER, 4> {};$/;"	c
@@ -654,9 +651,15 @@ InputPin	.\lib\FastLED\fastpin.h	/^	InputPin(int pin) : Pin(pin) { setInput(); }
 InputPin	.\lib\FastLED\fastpin.h	/^class InputPin : public Pin {$/;"	c
 Ivory	.\lib\FastLED\pixeltypes.h	/^        Ivory=0xFFFFF0,$/;"	e	enum:CRGB::__anon45
 JMPLOOP2	.\lib\FastLED\platforms\avr\clockless_trinket.h	312;"	d
-JOYSTICK_DEAD_ANGLE	.\src\wobbly.ino.cpp	62;"	d	file:
-JOYSTICK_DIRECTION	.\src\wobbly.ino.cpp	60;"	d	file:
-JOYSTICK_ORIENTATION	.\src\wobbly.ino.cpp	59;"	d	file:
+JOYSTICK_DEAD_ANGLE	.\src\Joystick.cpp	8;"	d	file:
+JOYSTICK_DEAD_ANGLE	.\src\Joystick.h	7;"	d
+JOYSTICK_DIRECTION	.\src\Joystick.cpp	6;"	d	file:
+JOYSTICK_DIRECTION	.\src\Joystick.h	5;"	d
+JOYSTICK_H	.\src\Joystick.h	2;"	d
+JOYSTICK_ORIENTATION	.\src\Joystick.cpp	5;"	d	file:
+JOYSTICK_ORIENTATION	.\src\Joystick.h	4;"	d
+Joystick	.\src\Joystick.cpp	/^class Joystick {$/;"	c	file:
+Joystick	.\src\Joystick.h	/^class Joystick {$/;"	c
 K170	.\lib\FastLED\hsv2rgb.cpp	275;"	d	file:
 K171	.\lib\FastLED\hsv2rgb.cpp	274;"	d	file:
 K255	.\lib\FastLED\hsv2rgb.cpp	273;"	d	file:
@@ -673,7 +676,6 @@ LDSCL4	.\lib\FastLED\platforms\avr\clockless_trinket.h	210;"	d
 LEDColorCorrection	.\lib\FastLED\color.h	/^} LEDColorCorrection;$/;"	t	typeref:enum:__anon24
 LEDS	.\lib\FastLED\FastLED.h	566;"	d
 LED_NUM	.\src\Player.h	4;"	d
-LED_NUM	.\src\wobbly.ino.cpp	46;"	d	file:
 LED_TIMER	.\lib\FastLED\platforms\arm\nrf51\led_sysdefs_arm_nrf51.h	8;"	d
 LERP	.\lib\FastLED\noise.cpp	61;"	d	file:
 LERP	.\lib\FastLED\noise.cpp	64;"	d	file:
@@ -750,7 +752,6 @@ MIN	.\lib\FastLED\platforms\esp\32\clockless_block_esp32.h	7;"	d
 MIN	.\lib\FastLED\platforms\esp\8266\clockless_block_esp8266.h	8;"	d
 MIN_ACCEPTABLE_DITHER_RATE_HZ	.\lib\FastLED\controller.h	245;"	d
 MIN_DELAY	.\lib\FastLED\fastspi_bitbang.h	116;"	d
-MIN_FRAME_INTERVAL	.\src\wobbly.ino.cpp	52;"	d	file:
 MOV1	.\lib\FastLED\platforms\avr\clockless_trinket.h	287;"	d
 MOVEMENTSPEED	.\src\Player.h	7;"	d
 MOV_ADDDE04	.\lib\FastLED\platforms\avr\clockless_trinket.h	304;"	d
@@ -1083,8 +1084,10 @@ MPU6050_WHO_AM_I_LENGTH	.\lib\MPU6050\MPU6050.h	393;"	d
 MPU6050_XG_FIFO_EN_BIT	.\lib\MPU6050\MPU6050.h	219;"	d
 MPU6050_YG_FIFO_EN_BIT	.\lib\MPU6050\MPU6050.h	220;"	d
 MPU6050_ZG_FIFO_EN_BIT	.\lib\MPU6050\MPU6050.h	221;"	d
-MPUAngleSamples	.\src\wobbly.ino.cpp	/^RunningMedian MPUAngleSamples = RunningMedian(5);$/;"	v
-MPUWobbleSamples	.\src\wobbly.ino.cpp	/^RunningMedian MPUWobbleSamples = RunningMedian(5);$/;"	v
+MPUAngleSamples	.\src\Joystick.cpp	/^RunningMedian MPUAngleSamples = RunningMedian(5);$/;"	v
+MPUAngleSamples	.\src\Joystick.h	/^    RunningMedian MPUAngleSamples = RunningMedian(5);$/;"	m	class:Joystick
+MPUWobbleSamples	.\src\Joystick.cpp	/^RunningMedian MPUWobbleSamples = RunningMedian(5);$/;"	v
+MPUWobbleSamples	.\src\Joystick.h	/^    RunningMedian MPUWobbleSamples = RunningMedian(5);$/;"	m	class:Joystick
 MS_COUNTER	.\lib\FastLED\platforms\arm\k20\led_sysdefs_arm_k20.h	35;"	d
 MS_COUNTER	.\lib\FastLED\platforms\arm\k66\led_sysdefs_arm_k66.h	35;"	d
 MS_COUNTER	.\lib\FastLED\platforms\arm\kl26\led_sysdefs_arm_kl26.h	38;"	d
@@ -1372,12 +1375,6 @@ SCROR14	.\lib\FastLED\platforms\avr\clockless_trinket.h	258;"	d
 SCROR24	.\lib\FastLED\platforms\avr\clockless_trinket.h	259;"	d
 SEI_CHK	.\lib\FastLED\platforms\arm\nrf51\clockless_arm_nrf51.h	10;"	d
 SEI_CHK	.\lib\FastLED\platforms\arm\nrf51\clockless_arm_nrf51.h	14;"	d
-SFXattacking	.\src\wobbly.ino.cpp	/^void SFXattacking(){$/;"	f
-SFXcomplete	.\src\wobbly.ino.cpp	/^void SFXcomplete(){$/;"	f
-SFXdead	.\src\wobbly.ino.cpp	/^void SFXdead(){$/;"	f
-SFXkill	.\src\wobbly.ino.cpp	/^void SFXkill(){$/;"	f
-SFXtilt	.\src\wobbly.ino.cpp	/^void SFXtilt(int amount){$/;"	f
-SFXwin	.\src\wobbly.ino.cpp	/^void SFXwin(){$/;"	f
 SHORTEST_HUES	.\lib\FastLED\colorutils.h	/^typedef enum { FORWARD_HUES, BACKWARD_HUES, SHORTEST_HUES, LONGEST_HUES } TGradientDirectionCode;$/;"	e	enum:__anon26
 SIGNAL	.\lib\I2Cdev\I2Cdev.cpp	/^    SIGNAL(TWI_vect) {$/;"	f
 SK6812	.\lib\FastLED\FastLED.h	/^template<uint8_t DATA_PIN, EOrder RGB_ORDER> class SK6812 : public SK6812Controller<DATA_PIN, RGB_ORDER> {};$/;"	c
@@ -1500,8 +1497,6 @@ TDynamicRGBGradientPalettePtr	.\lib\FastLED\colorutils.h	/^typedef TDynamicRGBGr
 TDynamicRGBGradientPalette_byte	.\lib\FastLED\colorutils.h	/^typedef uint8_t TDynamicRGBGradientPalette_byte ;$/;"	t
 TDynamicRGBGradientPalette_bytes	.\lib\FastLED\colorutils.h	/^typedef const TDynamicRGBGradientPalette_byte *TDynamicRGBGradientPalette_bytes;$/;"	t
 TGradientDirectionCode	.\lib\FastLED\colorutils.h	/^typedef enum { FORWARD_HUES, BACKWARD_HUES, SHORTEST_HUES, LONGEST_HUES } TGradientDirectionCode;$/;"	t	typeref:enum:__anon26
-TICKTIME	.\src\wobbly.ino.cpp	31;"	d	file:
-TIMEOUT	.\src\wobbly.ino.cpp	68;"	d	file:
 TIMSK1	.\lib\toneAC\toneAC.h	102;"	d
 TM1803	.\lib\FastLED\FastLED.h	/^template<uint8_t DATA_PIN, EOrder RGB_ORDER> class TM1803 : public TM1803Controller400Khz<DATA_PIN, RGB_ORDER> {};$/;"	c
 TM1803Controller400Khz	.\lib\FastLED\chipsets.h	/^class TM1803Controller400Khz : public ClocklessController<DATA_PIN, 6 * FMUL, 9 * FMUL, 6 * FMUL, RGB_ORDER> {};$/;"	c
@@ -1654,8 +1649,6 @@ WHITE	.\lib\GOFi2cOLED\GOFi2cOLED.h	31;"	d
 WIDTH	.\lib\GOFi2cOLED\GOFi2cOLED.h	/^uint8_t  WIDTH, HEIGHT;   \/\/ this is the 'raw' display w\/h - never changes$/;"	m	class:GOFi2cOLED
 WM	.\lib\FastLED\platforms\arm\k20\fastspi_arm_k20.h	311;"	d
 WM	.\lib\FastLED\platforms\arm\k66\fastspi_arm_k66.h	319;"	d
-WORLD_MAX	.\src\wobbly.ino.cpp	48;"	d	file:
-WORLD_MIN	.\src\wobbly.ino.cpp	47;"	d	file:
 WS2801	.\lib\FastLED\FastLED.h	/^	WS2801,$/;"	e	enum:ESPIChipsets
 WS2801Controller	.\lib\FastLED\chipsets.h	/^	WS2801Controller() {}$/;"	f	class:WS2801Controller
 WS2801Controller	.\lib\FastLED\chipsets.h	/^class WS2801Controller : public CPixelLEDController<RGB_ORDER> {$/;"	c
@@ -3244,10 +3237,6 @@ at	.\lib\avr-stl\include\stl_deque.h	/^  reference at(size_type __n)$/;"	f	class
 at	.\lib\avr-stl\include\stl_vector.h	/^  const_reference at(size_type __n) const$/;"	f	class:vector
 at	.\lib\avr-stl\include\stl_vector.h	/^  reference at(size_type __n)$/;"	f	class:vector
 atexit	.\lib\FastLED\FastLED.cpp	/^extern "C" int atexit(void (* \/*func*\/ )()) { return 0; }$/;"	f
-attackRange	.\src\wobbly.ino.cpp	/^int attackRange = 2;$/;"	v
-attackTicks	.\src\wobbly.ino.cpp	/^short attackTicks = 0;$/;"	v
-attackTime	.\src\wobbly.ino.cpp	/^short attackTime = 25 ;$/;"	v
-attacking	.\src\wobbly.ino.cpp	/^bool attacking = false;$/;"	v
 authors	.\lib\FastLED\library.json	/^    "authors": [$/;"	f
 authors	.\lib\RunningMedian\library.json	/^  "authors":$/;"	f
 available	.\lib\Adafruit_NeoPixel\examples\StrandtestBLE\BLESerial.cpp	/^int BLESerial::available(void) {$/;"	f	class:BLESerial
@@ -3264,9 +3253,12 @@ avr_malloc	.\lib\avr-stl\include\stl_alloc.h	103;"	d
 avr_realloc	.\lib\avr-stl\include\stl_alloc.h	/^static void *avr_realloc(void *ptr_,size_t size_)$/;"	f
 avr_realloc	.\lib\avr-stl\include\stl_alloc.h	105;"	d
 avrstl	.\lib\avr-stl\include\avr_config.h	/^namespace avrstl {$/;"	n
-ax	.\src\wobbly.ino.cpp	/^int16_t ax, ay, az;$/;"	v
-ay	.\src\wobbly.ino.cpp	/^int16_t ax, ay, az;$/;"	v
-az	.\src\wobbly.ino.cpp	/^int16_t ax, ay, az;$/;"	v
+ax	.\src\Joystick.cpp	/^int16_t ax, ay, az;$/;"	v
+ax	.\src\Joystick.h	/^    int16_t ax, ay, az;$/;"	m	class:Joystick
+ay	.\src\Joystick.cpp	/^int16_t ax, ay, az;$/;"	v
+ay	.\src\Joystick.h	/^    int16_t ax, ay, az;$/;"	m	class:Joystick
+az	.\src\Joystick.cpp	/^int16_t ax, ay, az;$/;"	v
+az	.\src\Joystick.h	/^    int16_t ax, ay, az;$/;"	m	class:Joystick
 b	.\lib\FastLED\bitswap.h	/^    sub4 b;$/;"	m	struct:__anon22::__anon23
 b	.\lib\FastLED\colorutils.h	/^        uint8_t b;$/;"	m	struct:__anon27::__anon28
 b	.\lib\FastLED\pixeltypes.h	/^                uint8_t b;$/;"	m	union:CRGB::__anon40::__anon41::__anon44
@@ -3422,9 +3414,6 @@ char_type	.\lib\avr-stl\include\stl_iterator.h	/^  typedef _CharT               
 char_type	.\lib\avr-stl\include\stl_iterator.h	/^  typedef _CharT                           char_type;$/;"	t	class:ostreambuf_iterator
 char_type	.\lib\avr-stl\include\stl_iterator.h	/^  typedef _CharT                         char_type;$/;"	t	class:istream_iterator
 char_type	.\lib\avr-stl\include\stl_iterator.h	/^  typedef _CharT                         char_type;$/;"	t	class:ostream_iterator
-checkAttack	.\src\wobbly.ino.cpp	/^void checkAttack() {$/;"	f
-checkCollision	.\src\wobbly.ino.cpp	/^void checkCollision() {$/;"	f
-checkWater	.\src\wobbly.ino.cpp	/^int checkWater() {$/;"	f
 cleanup_R1	.\lib\FastLED\lib8tion\scale8.h	/^LIB8STATIC_ALWAYS_INLINE void cleanup_R1()$/;"	f
 clear	.\lib\Adafruit_NeoPixel\Adafruit_NeoPixel.cpp	/^void Adafruit_NeoPixel::clear() {$/;"	f	class:Adafruit_NeoPixel
 clear	.\lib\FastLED\FastLED.cpp	/^void CFastLED::clear(bool writeData) {$/;"	f	class:CFastLED
@@ -3622,7 +3611,6 @@ cubicwave8	.\lib\FastLED\lib8tion.h	/^LIB8STATIC uint8_t cubicwave8(uint8_t in)$
 current	.\lib\avr-stl\include\stl_iterator.h	/^  _BidirectionalIterator current;$/;"	m	class:reverse_bidirectional_iterator
 current	.\lib\avr-stl\include\stl_iterator.h	/^  _Iterator current;$/;"	m	class:reverse_iterator
 current	.\lib\avr-stl\include\stl_iterator.h	/^  _RandomAccessIterator current;$/;"	m	class:reverse_iterator
-currentLevel	.\src\wobbly.ino.cpp	/^short currentLevel = 0;$/;"	v
 cursor_x	.\lib\GOFi2cOLED\GOFi2cOLED.h	/^uint8_t  cursor_x, cursor_y;$/;"	m	class:GOFi2cOLED
 cursor_y	.\lib\GOFi2cOLED\GOFi2cOLED.h	/^uint8_t  cursor_x, cursor_y;$/;"	m	class:GOFi2cOLED
 d	.\lib\FastLED\controller.h	/^        uint8_t d[3];$/;"	m	struct:PixelController
@@ -3722,7 +3710,6 @@ destroy	.\lib\avr-stl\include\stl_construct.h	/^inline void destroy(_ForwardIter
 destroy	.\lib\avr-stl\include\stl_construct.h	/^inline void destroy(_Tp* __pointer) {$/;"	f
 destroy_node	.\lib\avr-stl\include\stl_tree.h	/^  void destroy_node(_Link_type __p)$/;"	f	class:_Rb_tree
 devAddr	.\lib\MPU6050\MPU6050.h	/^        uint8_t devAddr;$/;"	m	class:MPU6050
-die	.\src\wobbly.ino.cpp	/^void die(){$/;"	f
 difference_type	.\lib\avr-stl\include\concept_checks.h	/^          difference_type;$/;"	t	struct:__difference_type_type_definition_requirement_violation
 difference_type	.\lib\avr-stl\include\concept_checks.h	/^__STL_TYPEDEF_REQUIREMENT(difference_type);$/;"	v
 difference_type	.\lib\avr-stl\include\stl_alloc.h	/^  typedef ptrdiff_t   difference_type;$/;"	t	class:allocator
@@ -3771,7 +3758,6 @@ difference_type	.\lib\avr-stl\include\stl_slist.h	/^  typedef void              
 difference_type	.\lib\avr-stl\include\stl_tree.h	/^  typedef ptrdiff_t difference_type;$/;"	t	class:_Rb_tree
 difference_type	.\lib\avr-stl\include\stl_tree.h	/^  typedef ptrdiff_t difference_type;$/;"	t	struct:_Rb_tree_base_iterator
 difference_type	.\lib\avr-stl\include\stl_vector.h	/^  typedef ptrdiff_t difference_type;$/;"	t	class:vector
-difficulty	.\src\wobbly.ino.cpp	/^short difficulty = 0;$/;"	v
 dim8_lin	.\lib\FastLED\lib8tion\scale8.h	/^LIB8STATIC uint8_t dim8_lin( uint8_t x )$/;"	f
 dim8_raw	.\lib\FastLED\lib8tion\scale8.h	/^LIB8STATIC uint8_t dim8_raw( uint8_t x)$/;"	f
 dim8_video	.\lib\FastLED\lib8tion\scale8.h	/^LIB8STATIC uint8_t dim8_video( uint8_t x)$/;"	f
@@ -3851,7 +3837,6 @@ drawCircle	.\lib\GOFi2cOLED\GOFi2cOLED.cpp	/^void GOFi2cOLED::drawCircle(uint8_t
 drawCircleHelper	.\lib\GOFi2cOLED\GOFi2cOLED.cpp	/^void GOFi2cOLED::drawCircleHelper( uint8_t x0, uint8_t y0,$/;"	f	class:GOFi2cOLED
 drawFastHLine	.\lib\GOFi2cOLED\GOFi2cOLED.cpp	/^void GOFi2cOLED::drawFastHLine(uint8_t x, uint8_t y, $/;"	f	class:GOFi2cOLED
 drawFastVLine	.\lib\GOFi2cOLED\GOFi2cOLED.cpp	/^void GOFi2cOLED::drawFastVLine(uint8_t x, uint8_t y, $/;"	f	class:GOFi2cOLED
-drawGame	.\src\wobbly.ino.cpp	/^void drawGame() {$/;"	f
 drawLine	.\lib\GOFi2cOLED\GOFi2cOLED.cpp	/^void GOFi2cOLED::drawLine(uint8_t x0, uint8_t y0, $/;"	f	class:GOFi2cOLED
 drawPixel	.\lib\GOFi2cOLED\GOFi2cOLED.cpp	/^void GOFi2cOLED::drawPixel(uint8_t x, uint8_t y, uint8_t color) {$/;"	f	class:GOFi2cOLED
 drawRect	.\lib\GOFi2cOLED\GOFi2cOLED.cpp	/^void GOFi2cOLED::drawRect(uint8_t x, uint8_t y, $/;"	f	class:GOFi2cOLED
@@ -3868,7 +3853,6 @@ ease8InOutApprox	.\lib\FastLED\lib8tion.h	/^LIB8STATIC uint8_t ease8InOutApprox(
 ease8InOutCubic	.\lib\FastLED\lib8tion.h	/^LIB8STATIC fract8 ease8InOutCubic( fract8 i)$/;"	f
 ease8InOutQuad	.\lib\FastLED\lib8tion.h	/^LIB8STATIC uint8_t ease8InOutQuad( uint8_t i)$/;"	f
 ease8InOutQuad	.\lib\FastLED\lib8tion.h	/^LIB8STATIC uint8_t ease8InOutQuad(uint8_t val) {$/;"	f
-effects	.\src\wobbly.ino.cpp	/^LightEffects effects;$/;"	v
 elems_in_bucket	.\lib\avr-stl\include\stl_hash_map.h	/^  size_type elems_in_bucket(size_type __n) const$/;"	f	class:hash_map
 elems_in_bucket	.\lib\avr-stl\include\stl_hash_map.h	/^  size_type elems_in_bucket(size_type __n) const$/;"	f	class:hash_multimap
 elems_in_bucket	.\lib\avr-stl\include\stl_hash_set.h	/^  size_type elems_in_bucket(size_type __n) const$/;"	f	class:hash_multiset
@@ -3938,7 +3922,6 @@ endBoundary	.\lib\FastLED\chipsets.h	/^	void endBoundary(int nLeds) { int nLongW
 endTime	.\lib\Adafruit_NeoPixel\Adafruit_NeoPixel.h	/^    endTime;       \/\/ Latch timing reference$/;"	m	class:Adafruit_NeoPixel
 endTransmission	.\lib\I2Cdev\I2Cdev.cpp	/^    uint8_t TwoWire::endTransmission(uint16_t timeout) {$/;"	f	class:TwoWire
 end_pos	.\lib\FastLED\pixelset.h	/^  PIXEL_TYPE * const end_pos;$/;"	m	class:CPixelView
-enemyList	.\src\wobbly.ino.cpp	/^std::list<Enemy*> *enemyList = new std::list<Enemy*>;$/;"	v
 entries	.\lib\FastLED\colorutils.h	/^    CHSV entries[16];$/;"	m	class:CHSVPalette16
 entries	.\lib\FastLED\colorutils.h	/^    CHSV entries[256];$/;"	m	class:CHSVPalette256
 entries	.\lib\FastLED\colorutils.h	/^    CHSV entries[32];$/;"	m	class:CHSVPalette32
@@ -4016,7 +3999,6 @@ erase_after	.\lib\avr-stl\include\stl_slist.h	/^  iterator erase_after(iterator 
 erase_after	.\lib\avr-stl\include\stl_slist.h	/^  iterator erase_after(iterator __pos) {$/;"	f	class:slist
 espShow	.\lib\Adafruit_NeoPixel\esp8266.c	/^void ICACHE_RAM_ATTR espShow($/;"	f
 examples	.\lib\FastLED\library.json	/^    "examples": [$/;"	f
-exitList	.\src\wobbly.ino.cpp	/^std::list<Entity*> *exitList = new std::list<Entity*>;$/;"	v
 exp_	.\lib\FastLED\lib8tion.h	/^        uint32_t exp_  :  8;$/;"	m	struct:__anon30::__anon32
 explicit	.\lib\avr-stl\include\stl_config.h	474;"	d
 exponent	.\lib\FastLED\lib8tion.h	/^        uint32_t exponent:  8;$/;"	m	struct:__anon30::__anon31
@@ -4157,8 +4139,6 @@ gRed_mW	.\lib\FastLED\power_mgt.cpp	/^static const uint8_t gRed_mW   = 16 * 5; \
 gState	.\lib\FastLED\platforms\arm\k20\fastspi_arm_k20.h	/^	SPIState gState;$/;"	m	class:ARMHardwareSPIOutput
 gState	.\lib\FastLED\platforms\arm\k66\fastspi_arm_k66.h	/^	SPIState gState;$/;"	m	class:ARMHardwareSPIOutput
 gTimeErrorAccum256ths	.\lib\FastLED\platforms\avr\clockless_trinket.h	/^static uint8_t gTimeErrorAccum256ths;$/;"	v
-gameOver	.\src\wobbly.ino.cpp	/^void gameOver() {$/;"	f
-gameTick	.\src\wobbly.ino.cpp	/^void gameTick() {$/;"	f
 gamma8	.\lib\Adafruit_NeoPixel\Adafruit_NeoPixel.cpp	/^uint8_t Adafruit_NeoPixel::gamma8(uint8_t x) const {$/;"	f	class:Adafruit_NeoPixel
 generate	.\lib\avr-stl\include\stl_algo.h	/^void generate(_ForwardIter __first, _ForwardIter __last, _Generator __gen) {$/;"	f
 generate_n	.\lib\avr-stl\include\stl_algo.h	/^_OutputIter generate_n(_OutputIter __first, _Size __n, _Generator __gen) {$/;"	f
@@ -4220,7 +4200,7 @@ getFullScaleGyroRange	.\lib\MPU6050\MPU6050.cpp	/^uint8_t MPU6050::getFullScaleG
 getHighest	.\lib\RunningMedian\RunningMedian.h	/^  float getHighest() { return getSortedElement(_cnt - 1); };$/;"	f	class:RunningMedian
 getI2CBypassEnabled	.\lib\MPU6050\MPU6050.cpp	/^bool MPU6050::getI2CBypassEnabled() {$/;"	f	class:MPU6050
 getI2CMasterModeEnabled	.\lib\MPU6050\MPU6050.cpp	/^bool MPU6050::getI2CMasterModeEnabled() {$/;"	f	class:MPU6050
-getInput	.\src\wobbly.ino.cpp	/^void getInput() {$/;"	f
+getInput	.\src\Joystick.cpp	/^  static void getInput() {$/;"	f	class:Joystick
 getIntDMPEnabled	.\lib\MPU6050\MPU6050.cpp	/^bool MPU6050::getIntDMPEnabled() {$/;"	f	class:MPU6050
 getIntDMPStatus	.\lib\MPU6050\MPU6050.cpp	/^bool MPU6050::getIntDMPStatus() {$/;"	f	class:MPU6050
 getIntDataReadyEnabled	.\lib\MPU6050\MPU6050.cpp	/^bool MPU6050::getIntDataReadyEnabled() {$/;"	f	class:MPU6050
@@ -4416,11 +4396,13 @@ grad8	.\lib\FastLED\noise.cpp	/^static int8_t inline __attribute__((always_inlin
 greater	.\lib\avr-stl\include\stl_function.h	/^struct greater : public binary_function<_Tp,_Tp,bool> $/;"	s
 greater_equal	.\lib\avr-stl\include\stl_function.h	/^struct greater_equal : public binary_function<_Tp,_Tp,bool>$/;"	s
 green	.\lib\FastLED\pixeltypes.h	/^                uint8_t green;$/;"	m	union:CRGB::__anon40::__anon41::__anon43
-gx	.\src\wobbly.ino.cpp	/^int16_t gx, gy, gz;$/;"	v
-gy	.\src\wobbly.ino.cpp	/^int16_t gx, gy, gz;$/;"	v
-gz	.\src\wobbly.ino.cpp	/^int16_t gx, gy, gz;$/;"	v
+gx	.\src\Joystick.cpp	/^int16_t gx, gy, gz;$/;"	v
+gx	.\src\Joystick.h	/^    int16_t gx, gy, gz;$/;"	m	class:Joystick
+gy	.\src\Joystick.cpp	/^int16_t gx, gy, gz;$/;"	v
+gy	.\src\Joystick.h	/^    int16_t gx, gy, gz;$/;"	m	class:Joystick
+gz	.\src\Joystick.cpp	/^int16_t gx, gy, gz;$/;"	v
+gz	.\src\Joystick.h	/^    int16_t gx, gy, gz;$/;"	m	class:Joystick
 h	.\lib\FastLED\pixeltypes.h	/^		        uint8_t h; };$/;"	m	union:CHSV::__anon34::__anon35::__anon36
-handleCollision	.\src\wobbly.ino.cpp	/^void handleCollision(Entity* collObj) {$/;"	f
 has	.\lib\FastLED\controller.h	/^        __attribute__((always_inline)) inline bool has(int n) {$/;"	f	struct:PixelController
 has_trivial_assignment_operator	.\lib\avr-stl\include\type_traits.h	/^   typedef __false_type    has_trivial_assignment_operator;$/;"	t	struct:__type_traits
 has_trivial_assignment_operator	.\lib\avr-stl\include\type_traits.h	/^   typedef __true_type    has_trivial_assignment_operator;$/;"	t	struct:__type_traits
@@ -4600,7 +4582,6 @@ initPin	.\lib\FastLED\platforms\esp\32\clockless_block_esp32.h	/^    template<in
 initPin	.\lib\FastLED\platforms\esp\8266\clockless_block_esp8266.h	/^  template<int PIN> static void initPin() {$/;"	f	class:InlineBlockClocklessController
 init_binary_dithering	.\lib\FastLED\controller.h	/^        void init_binary_dithering() {$/;"	f	struct:PixelController
 initialize	.\lib\MPU6050\MPU6050.cpp	/^void MPU6050::initialize() {$/;"	f	class:MPU6050
-initialize	.\src\wobbly.ino.cpp	/^void initialize() {$/;"	f
 inner_product	.\lib\avr-stl\include\stl_numeric.h	/^_Tp inner_product(_InputIterator1 __first1, _InputIterator1 __last1,$/;"	f
 inoise16	.\lib\FastLED\noise.cpp	/^uint16_t inoise16(uint32_t x) {$/;"	f
 inoise16	.\lib\FastLED\noise.cpp	/^uint16_t inoise16(uint32_t x, uint32_t y) {$/;"	f
@@ -4733,6 +4714,7 @@ int_type	.\lib\avr-stl\include\stl_iterator.h	/^  typedef typename _Traits::int_
 iota	.\lib\avr-stl\include\stl_numeric.h	/^iota(_ForwardIter __first, _ForwardIter __last, _Tp __value)$/;"	f
 is800KHz	.\lib\Adafruit_NeoPixel\Adafruit_NeoPixel.h	/^    is800KHz,      \/\/ ...true if 800 KHz pixels$/;"	m	class:Adafruit_NeoPixel
 isActive	.\src\Trap.h	/^bool Trap::isActive() {$/;"	f	class:Trap
+isAttacking	.\src\Joystick.cpp	/^  static bool isAttacking() {$/;"	f	class:Joystick
 isSelected	.\lib\FastLED\fastpin.h	/^	virtual bool isSelected() { return (*mPort & mPinMask) == mPinMask; }$/;"	f	class:Pin
 is_POD_type	.\lib\avr-stl\include\type_traits.h	/^   typedef __false_type    is_POD_type;$/;"	t	struct:__type_traits
 is_POD_type	.\lib\avr-stl\include\type_traits.h	/^   typedef __true_type    is_POD_type;$/;"	t	struct:__type_traits
@@ -4839,8 +4821,12 @@ iterator_traits	.\lib\avr-stl\include\stl_iterator_base.h	/^struct iterator_trai
 iterator_traits	.\lib\avr-stl\include\stl_iterator_base.h	/^struct iterator_traits<_Tp*> {$/;"	s
 iterator_traits	.\lib\avr-stl\include\stl_iterator_base.h	/^struct iterator_traits<const _Tp*> {$/;"	s
 iterator_type	.\lib\avr-stl\include\stl_iterator.h	/^  typedef _Iterator iterator_type;$/;"	t	class:reverse_iterator
-joystickTilt	.\src\wobbly.ino.cpp	/^int joystickTilt = 0;$/;"	v
-joystickWobbleSpeed	.\src\wobbly.ino.cpp	/^int joystickWobbleSpeed = 0;$/;"	v
+joystickTilt	.\src\Joystick.cpp	/^  static int joystickTilt;              \/\/ Variable speichert Winkel des Joysticks: <=0  1. input (bei uns: rückwärts gehen) >=0  2. input (bei uns: vorwärts gehen)$/;"	m	class:Joystick	file:
+joystickTilt	.\src\Joystick.cpp	/^int Joystick::joystickTilt = 0;$/;"	m	class:Joystick	file:
+joystickTilt	.\src\Joystick.h	/^    int joystickTilt;$/;"	m	class:Joystick
+joystickWobbleSpeed	.\src\Joystick.cpp	/^  static int joystickWobbleSpeed;       \/\/ Variable speichert max. Geschwindigkeit des Joysticks beim wobblen.$/;"	m	class:Joystick	file:
+joystickWobbleSpeed	.\src\Joystick.cpp	/^int Joystick::joystickWobbleSpeed = 0;$/;"	m	class:Joystick	file:
+joystickWobbleSpeed	.\src\Joystick.h	/^    int joystickWobbleSpeed;$/;"	m	class:Joystick
 just8bits	.\lib\FastLED\bitswap.h	/^} just8bits;$/;"	t	typeref:union:__anon19
 key_comp	.\lib\avr-stl\include\stl_map.h	/^  key_compare key_comp() const { return _M_t.key_comp(); }$/;"	f	class:map
 key_comp	.\lib\avr-stl\include\stl_multimap.h	/^  key_compare key_comp() const { return _M_t.key_comp(); }$/;"	f	class:multimap
@@ -4880,7 +4866,6 @@ leds	.\lib\FastLED\controller.h	/^    CRGB* leds() { return m_Data; }$/;"	f	clas
 leds	.\lib\FastLED\pixelset.h	/^    T * leds;$/;"	m	class:CPixelView::pixelset_iterator_base
 leds	.\lib\FastLED\pixelset.h	/^  PIXEL_TYPE * const leds;$/;"	m	class:CPixelView
 leds	.\src\LightEffects.h	/^    CRGB leds[NUM_LED];$/;"	m	class:LightEffects
-leds	.\src\wobbly.ino.cpp	/^CRGB leds[LED_NUM];$/;"	v
 len	.\lib\FastLED\pixelset.h	/^  const int   len;$/;"	m	class:CPixelView
 length	.\lib\I2Cdev\I2Cdev.cpp	/^        uint8_t length;$/;"	m	struct:__anon55	file:
 length	.\lib\avr-stl\include\char_traits.h	/^  static size_t length(const _CharT* __s) {$/;"	f	class:__char_traits_base
@@ -4901,7 +4886,6 @@ lexicographical_compare	.\lib\avr-stl\include\stl_algobase.h	/^inline bool lexic
 lexicographical_compare	.\lib\avr-stl\include\stl_algobase.h	/^lexicographical_compare(const unsigned char* __first1,$/;"	f
 lexicographical_compare_3way	.\lib\avr-stl\include\stl_algobase.h	/^int lexicographical_compare_3way(_InputIter1 __first1, _InputIter1 __last1,$/;"	f
 license	.\lib\FastLED\library.json	/^    "license": "MIT",$/;"	f
-lifeLEDs	.\src\wobbly.ino.cpp	/^int lifeLEDs[3] = {28, 42 ,52};$/;"	v
 list	.\lib\avr-stl\include\stl_list.h	/^  explicit list(const allocator_type& __a = allocator_type()) : _Base(__a) {}$/;"	f	class:list
 list	.\lib\avr-stl\include\stl_list.h	/^  explicit list(size_type __n)$/;"	f	class:list
 list	.\lib\avr-stl\include\stl_list.h	/^  list(_InputIterator __first, _InputIterator __last,$/;"	f	class:list
@@ -4937,22 +4921,10 @@ loadByte	.\lib\FastLED\controller.h	/^        template<int SLOT>  __attribute__(
 loadDynamicGradientPalette	.\lib\FastLED\colorutils.h	/^    CRGBPalette16& loadDynamicGradientPalette( TDynamicRGBGradientPalette_bytes gpal )$/;"	f	class:CRGBPalette16
 loadDynamicGradientPalette	.\lib\FastLED\colorutils.h	/^    CRGBPalette256& loadDynamicGradientPalette( TDynamicRGBGradientPalette_bytes gpal )$/;"	f	class:CRGBPalette256
 loadDynamicGradientPalette	.\lib\FastLED\colorutils.h	/^    CRGBPalette32& loadDynamicGradientPalette( TDynamicRGBGradientPalette_bytes gpal )$/;"	f	class:CRGBPalette32
-loadLevel	.\src\wobbly.ino.cpp	/^void loadLevel() {$/;"	f
-loadLevelEight	.\src\wobbly.ino.cpp	/^void loadLevelEight() {$/;"	f
-loadLevelFive	.\src\wobbly.ino.cpp	/^void loadLevelFive() {$/;"	f
-loadLevelFour	.\src\wobbly.ino.cpp	/^void loadLevelFour() {$/;"	f
-loadLevelNine	.\src\wobbly.ino.cpp	/^void loadLevelNine() {$/;"	f
-loadLevelOne	.\src\wobbly.ino.cpp	/^void loadLevelOne() {$/;"	f
-loadLevelSeven	.\src\wobbly.ino.cpp	/^void loadLevelSeven() {$/;"	f
-loadLevelSix	.\src\wobbly.ino.cpp	/^void loadLevelSix() {$/;"	f
-loadLevelThree	.\src\wobbly.ino.cpp	/^void loadLevelThree() {$/;"	f
-loadLevelTwo	.\src\wobbly.ino.cpp	/^void loadLevelTwo() {$/;"	f
-loadStartMenu	.\src\wobbly.ino.cpp	/^void loadStartMenu() {$/;"	f
 logfade12	.\lib\FastLED\noise.cpp	/^uint16_t logfade12(uint16_t val) {$/;"	f
 logical_and	.\lib\avr-stl\include\stl_function.h	/^struct logical_and : public binary_function<_Tp,_Tp,bool>$/;"	s
 logical_not	.\lib\avr-stl\include\stl_function.h	/^struct logical_not : public unary_function<_Tp,bool>$/;"	s
 logical_or	.\lib\avr-stl\include\stl_function.h	/^struct logical_or : public binary_function<_Tp,_Tp,bool>$/;"	s
-loop	.\src\wobbly.ino.cpp	/^void loop() {$/;"	f
 loval	.\lib\FastLED\fastpin.h	/^	port_t loval() __attribute__ ((always_inline)) { return *mPort & ~mPinMask; }$/;"	f	class:Pin
 loval	.\lib\FastLED\fastpin.h	/^	static port_t loval() __attribute__ ((always_inline)) { return *sPort & ~sPinMask; }$/;"	f	class:FastPin
 loval	.\lib\FastLED\fastpin.h	/^	static port_t loval() __attribute__ ((always_inline)) { return 0;}$/;"	f	class:FastPin
@@ -5088,7 +5060,6 @@ map	.\lib\avr-stl\include\stl_map.h	/^  map(const_iterator __first, const_iterat
 map	.\lib\avr-stl\include\stl_map.h	/^  map(const_iterator __first, const_iterator __last, const _Compare& __comp,$/;"	f	class:map
 map	.\lib\avr-stl\include\stl_map.h	/^class map {$/;"	c
 map8	.\lib\FastLED\lib8tion.h	/^LIB8STATIC uint8_t map8( uint8_t in, uint8_t rangeStart, uint8_t rangeEnd)$/;"	f
-mapLed	.\src\wobbly.ino.cpp	/^int mapLed(int position) {$/;"	f
 map_data_into_colors_through_palette	.\lib\FastLED\colorutils.h	/^void map_data_into_colors_through_palette($/;"	f
 mapped_type	.\lib\avr-stl\include\stl_hash_map.h	/^  typedef _Tp mapped_type;$/;"	t	class:hash_map
 mapped_type	.\lib\avr-stl\include\stl_hash_map.h	/^  typedef _Tp mapped_type;$/;"	t	class:hash_multimap
@@ -5106,9 +5077,6 @@ max	.\lib\avr-stl\include\stl_algobase.h	/^inline const _Tp& max(const _Tp& __a,
 max	.\lib\avr-stl\include\stl_algobase.h	/^inline const _Tp& max(const _Tp& __a, const _Tp& __b, _Compare __comp) {$/;"	f
 max	.\lib\avr-stl\include\stl_algobase.h	105;"	d
 max	.\lib\avr-stl\include\stl_config.h	410;"	d
-max	.\src\wobbly.ino.cpp	/^inline double max(double a, double b) { return ((a)<(b) ? (b) : (a)); }$/;"	f
-max	.\src\wobbly.ino.cpp	/^inline int max(int a, int b) { return ((a)<(b) ? (b) : (a)); }$/;"	f
-max	.\src\wobbly.ino.cpp	127;"	d	file:
 max_bucket_count	.\lib\avr-stl\include\stl_hash_map.h	/^  size_type max_bucket_count() const { return _M_ht.max_bucket_count(); }$/;"	f	class:hash_map
 max_bucket_count	.\lib\avr-stl\include\stl_hash_map.h	/^  size_type max_bucket_count() const { return _M_ht.max_bucket_count(); }$/;"	f	class:hash_multimap
 max_bucket_count	.\lib\avr-stl\include\stl_hash_set.h	/^  size_type max_bucket_count() const { return _M_ht.max_bucket_count(); }$/;"	f	class:hash_multiset
@@ -5159,9 +5127,6 @@ min	.\lib\avr-stl\include\stl_algobase.h	/^inline const _Tp& min(const _Tp& __a,
 min	.\lib\avr-stl\include\stl_algobase.h	/^inline const _Tp& min(const _Tp& __a, const _Tp& __b, _Compare __comp) {$/;"	f
 min	.\lib\avr-stl\include\stl_algobase.h	104;"	d
 min	.\lib\avr-stl\include\stl_config.h	409;"	d
-min	.\src\wobbly.ino.cpp	/^inline double min(double a, double b) { return ((a)<(b) ? (a) : (b)); }$/;"	f
-min	.\src\wobbly.ino.cpp	/^inline int min(int a, int b) { return ((a)<(b) ? (a) : (b)); }$/;"	f
-min	.\src\wobbly.ino.cpp	75;"	d	file:
 min_element	.\lib\avr-stl\include\stl_algo.h	/^_ForwardIter min_element(_ForwardIter __first, _ForwardIter __last) {$/;"	f
 min_element	.\lib\avr-stl\include\stl_algo.h	/^_ForwardIter min_element(_ForwardIter __first, _ForwardIter __last,$/;"	f
 minus	.\lib\avr-stl\include\stl_function.h	/^struct minus : public binary_function<_Tp,_Tp,_Tp> {$/;"	s
@@ -5174,9 +5139,8 @@ mosi	.\lib\FastLED\platforms\arm\nrf51\fastspi_arm_nrf51.h	/^    uint32_t mosi;$
 move	.\lib\avr-stl\include\char_traits.h	/^  static _CharT* move(_CharT* __s1, const _CharT* __s2, size_t __n) {$/;"	f	class:__char_traits_base
 move	.\src\Enemy.h	/^int Enemy::move(int playerPosition, int tick) {$/;"	f	class:Enemy
 move	.\src\Player.h	/^void Player::move(int input) {$/;"	f	class:Player
-moveDelay	.\src\wobbly.ino.cpp	/^uint8_t moveDelay = 0;$/;"	v
-moveEnemies	.\src\wobbly.ino.cpp	/^void moveEnemies() {$/;"	f
-mpu6050	.\src\wobbly.ino.cpp	/^MPU6050 mpu6050;$/;"	v
+mpu6050	.\src\Joystick.cpp	/^MPU6050 mpu6050;$/;"	v
+mpu6050	.\src\Joystick.h	/^    MPU6050 mpu6050;$/;"	m	class:Joystick
 mul8	.\lib\FastLED\lib8tion\math8.h	/^LIB8STATIC_ALWAYS_INLINE uint8_t mul8( uint8_t i, uint8_t j)$/;"	f
 multimap	.\lib\avr-stl\include\stl_multimap.h	/^  explicit multimap(const _Compare& __comp,$/;"	f	class:multimap
 multimap	.\lib\avr-stl\include\stl_multimap.h	/^  multimap() : _M_t(_Compare(), allocator_type()) { }$/;"	f	class:multimap
@@ -5834,7 +5798,6 @@ pixelset_iterator_base	.\lib\FastLED\pixelset.h	/^  class pixelset_iterator_base
 platforms	.\lib\FastLED\library.json	/^    "platforms": "atmelavr,atmelsam,freescalekinetis,nordicnrf51,nxplpc,ststm32,teensy,esp8266,esp32",$/;"	f
 platforms	.\lib\I2Cdev\library.json	/^  "platforms": "atmelavr"$/;"	f
 platforms	.\lib\RunningMedian\library.json	/^  "platforms": "*",$/;"	f
-player	.\src\wobbly.ino.cpp	/^Player* player = new Player();$/;"	v
 plus	.\lib\avr-stl\include\stl_function.h	/^struct plus : public binary_function<_Tp,_Tp,_Tp> {$/;"	s
 pocto	.\lib\FastLED\platforms\arm\k20\octows2811_controller.h	/^  OctoWS2811  *pocto;$/;"	m	class:COctoWS2811Controller
 pointer	.\lib\avr-stl\include\concept_checks.h	/^  typedef typename __STD::iterator_traits<_Iter>::pointer pointer;$/;"	t	struct:__pointer_type_definition_requirement_violation
@@ -6363,7 +6326,6 @@ setDMPConfig1	.\lib\MPU6050\MPU6050.cpp	/^void MPU6050::setDMPConfig1(uint8_t co
 setDMPConfig2	.\lib\MPU6050\MPU6050.cpp	/^void MPU6050::setDMPConfig2(uint8_t config) {$/;"	f	class:MPU6050
 setDMPEnabled	.\lib\MPU6050\MPU6050.cpp	/^void MPU6050::setDMPEnabled(bool enabled) {$/;"	f	class:MPU6050
 setDeviceID	.\lib\MPU6050\MPU6050.cpp	/^void MPU6050::setDeviceID(uint8_t id) {$/;"	f	class:MPU6050
-setDifficultySettings	.\src\wobbly.ino.cpp	/^void setDifficultySettings() {$/;"	f
 setDirection	.\src\Water.h	/^void Water::setDirection(bool dir) {$/;"	f	class:Water
 setDither	.\lib\FastLED\FastLED.cpp	/^void CFastLED::setDither(uint8_t ditherMode)  {$/;"	f	class:CFastLED
 setDither	.\lib\FastLED\controller.h	/^    inline CLEDController & setDither(uint8_t ditherMode = BINARY_DITHER) { m_DitherMode = ditherMode; return *this; }$/;"	f	class:CLEDController
@@ -6528,7 +6490,6 @@ set_max_power_indicator_LED	.\lib\FastLED\power_mgt.cpp	/^void set_max_power_ind
 set_symmetric_difference	.\lib\avr-stl\include\stl_algo.h	/^set_symmetric_difference(_InputIter1 __first1, _InputIter1 __last1,$/;"	f
 set_union	.\lib\avr-stl\include\stl_algo.h	/^_OutputIter set_union(_InputIter1 __first1, _InputIter1 __last1,$/;"	f
 setup	.\lib\I2Cdev\I2Cdev.cpp	/^    void Fastwire::setup(int khz, boolean pullup) {$/;"	f	class:Fastwire
-setup	.\src\wobbly.ino.cpp	/^void setup() {$/;"	f
 sfract15	.\lib\FastLED\lib8tion.h	/^typedef int16_t   sfract15; \/\/\/< ANSI: signed         _Fract$/;"	t
 sfract15ToFloat	.\lib\FastLED\lib8tion.h	/^LIB8STATIC float sfract15ToFloat( sfract15 y)$/;"	f
 sfract7	.\lib\FastLED\lib8tion.h	/^typedef int8_t    sfract7;  \/\/\/< ANSI: signed   short _Fract$/;"	t
@@ -6554,12 +6515,8 @@ showColor	.\lib\FastLED\controller.h	/^    void showColor(const struct CRGB & da
 showColor	.\lib\FastLED\controller.h	/^    void showColor(const struct CRGB &data, int nLeds, uint8_t brightness) {$/;"	f	class:CLEDController
 showColor	.\lib\FastLED\controller.h	/^  virtual void showColor(const struct CRGB & data, int nLeds, CRGB scale) {$/;"	f	class:CPixelLEDController
 showCrippleAnimation	.\src\LightEffects.cpp	/^void LightEffects::showCrippleAnimation(int center, uint16_t steps, CRGB::HTMLColorCode crippleColor, CRGB::HTMLColorCode bgColor) {$/;"	f	class:LightEffects
-showDieAnimation	.\src\wobbly.ino.cpp	/^void showDieAnimation() {$/;"	f
-showEnemies	.\src\wobbly.ino.cpp	/^void showEnemies() {$/;"	f
-showExits	.\src\wobbly.ino.cpp	/^void showExits() {$/;"	f
 showLedData	.\lib\FastLED\platforms\arm\common\m0clockless.h	/^showLedData(volatile uint32_t *_port, uint32_t _bitmask, const uint8_t *_leds, uint32_t num_leds, struct M0ClocklessData *pData) {$/;"	f
 showLeds	.\lib\FastLED\controller.h	/^    void showLeds(uint8_t brightness=255) {$/;"	f	class:CLEDController
-showLeds	.\src\wobbly.ino.cpp	/^void showLeds() {$/;"	f
 showPixels	.\lib\FastLED\chipsets.h	/^	virtual void showPixels(PixelController<RGB_ORDER> & pixels) {$/;"	f	class:APA102Controller
 showPixels	.\lib\FastLED\chipsets.h	/^	virtual void showPixels(PixelController<RGB_ORDER> & pixels) {$/;"	f	class:LPD8806Controller
 showPixels	.\lib\FastLED\chipsets.h	/^	virtual void showPixels(PixelController<RGB_ORDER> & pixels) {$/;"	f	class:P9813Controller
@@ -6589,7 +6546,6 @@ showPixels	.\lib\FastLED\platforms\esp\32\clockless_block_esp32.h	/^    virtual 
 showPixels	.\lib\FastLED\platforms\esp\32\clockless_esp32.h	/^    virtual void showPixels(PixelController<RGB_ORDER> & pixels) {$/;"	f	class:ClocklessController
 showPixels	.\lib\FastLED\platforms\esp\8266\clockless_block_esp8266.h	/^	virtual void showPixels(PixelController<RGB_ORDER, LANES, PORT_MASK> & pixels) {$/;"	f	class:InlineBlockClocklessController
 showPixels	.\lib\FastLED\platforms\esp\8266\clockless_esp8266.h	/^	virtual void showPixels(PixelController<RGB_ORDER> & pixels) {$/;"	f	class:ClocklessController
-showPlayer	.\src\wobbly.ino.cpp	/^void showPlayer() {$/;"	f
 showRGBInternal	.\lib\FastLED\platforms\arm\d21\clockless_arm_d21.h	/^  static uint32_t showRGBInternal(PixelController<RGB_ORDER> pixels) {$/;"	f	class:ClocklessController
 showRGBInternal	.\lib\FastLED\platforms\arm\k20\clockless_arm_k20.h	/^	static uint32_t showRGBInternal(PixelController<RGB_ORDER> pixels) {$/;"	f	class:ClocklessController
 showRGBInternal	.\lib\FastLED\platforms\arm\k20\clockless_block_arm_k20.h	/^		static uint32_t showRGBInternal(PixelController<RGB_ORDER, LANES, PORT_MASK> &allpixels) {$/;"	f	class:InlineBlockClocklessController
@@ -6608,10 +6564,6 @@ showRGBInternal	.\lib\FastLED\platforms\esp\32\clockless_esp32.h	/^    static ui
 showRGBInternal	.\lib\FastLED\platforms\esp\8266\clockless_block_esp8266.h	/^		static uint32_t ICACHE_RAM_ATTR showRGBInternal(PixelController<RGB_ORDER, LANES, PORT_MASK> &allpixels) {$/;"	f	class:InlineBlockClocklessController
 showRGBInternal	.\lib\FastLED\platforms\esp\8266\clockless_esp8266.h	/^	static uint32_t ICACHE_RAM_ATTR showRGBInternal(PixelController<RGB_ORDER> pixels) {$/;"	f	class:ClocklessController
 showSnakeAnimation	.\src\LightEffects.cpp	/^void LightEffects::showSnakeAnimation(bool direction, CRGB::HTMLColorCode color) {$/;"	f	class:LightEffects
-showSpawners	.\src\wobbly.ino.cpp	/^void showSpawners() {$/;"	f
-showTraps	.\src\wobbly.ino.cpp	/^void showTraps() {$/;"	f
-showWater	.\src\wobbly.ino.cpp	/^void showWater() {$/;"	f
-showWinAnimation	.\src\wobbly.ino.cpp	/^void showWinAnimation() {$/;"	f
 show_at_max_brightness_for_power	.\lib\FastLED\power_mgt.cpp	/^void show_at_max_brightness_for_power()$/;"	f
 signbit	.\lib\FastLED\lib8tion.h	/^        uint32_t signbit:   1;$/;"	m	struct:__anon30::__anon31
 simple_alloc	.\lib\avr-stl\include\stl_alloc.h	/^class simple_alloc {$/;"	c
@@ -6699,9 +6651,6 @@ sort	.\lib\avr-stl\include\stl_slist.h	/^void slist<_Tp,_Alloc>::sort()$/;"	f	cl
 sort	.\lib\avr-stl\include\stl_slist.h	/^void slist<_Tp,_Alloc>::sort(_StrictWeakOrdering __comp)$/;"	f	class:slist
 sort_heap	.\lib\avr-stl\include\stl_heap.h	/^sort_heap(_RandomAccessIterator __first,$/;"	f
 sort_heap	.\lib\avr-stl\include\stl_heap.h	/^void sort_heap(_RandomAccessIterator __first, _RandomAccessIterator __last)$/;"	f
-spawnEnemies	.\src\wobbly.ino.cpp	/^void spawnEnemies() {$/;"	f
-spawnList	.\src\wobbly.ino.cpp	/^std::list<SpawnPoint*> *spawnList = new std::list<SpawnPoint*>;$/;"	v
-spawnSpeed	.\src\wobbly.ino.cpp	/^short spawnSpeed;$/;"	v
 spawns	.\src\SpawnPoint.h	/^bool SpawnPoint::spawns() {$/;"	f	class:SpawnPoint
 splice	.\lib\avr-stl\include\stl_list.h	/^  void splice(iterator __position, list& __x) {$/;"	f	class:list
 splice	.\lib\avr-stl\include\stl_list.h	/^  void splice(iterator __position, list&, iterator __first, iterator __last) {$/;"	f	class:list
@@ -6723,7 +6672,6 @@ stack	.\lib\avr-stl\include\stl_stack.h	/^  stack() : c() {}$/;"	f	class:stack
 stack	.\lib\avr-stl\include\stl_stack.h	/^class stack {$/;"	c
 startBoundary	.\lib\FastLED\chipsets.h	/^	void startBoundary() { mSPI.writeWord(0); mSPI.writeWord(0); }$/;"	f	class:APA102Controller
 startBoundary	.\lib\FastLED\chipsets.h	/^	void startBoundary() { mSPI.writeWord(0); mSPI.writeWord(0); }$/;"	f	class:SK9822Controller
-state	.\src\wobbly.ino.cpp	/^char* state = "INIT";$/;"	v
 state_type	.\lib\avr-stl\include\char_traits.h	/^	typedef char state_type;$/;"	t	class:__char_traits_base
 state_type	.\lib\avr-stl\include\char_traits.h	/^  typedef mbstate_t state_type;$/;"	t	class:__char_traits_base
 static_assert	.\lib\FastLED\cpp_compat.h	8;"	d
@@ -6807,10 +6755,6 @@ textbgcolor	.\lib\GOFi2cOLED\GOFi2cOLED.h	/^uint8_t  textcolor, textbgcolor;$/;"
 textcolor	.\lib\GOFi2cOLED\GOFi2cOLED.h	/^uint8_t  textcolor, textbgcolor;$/;"	m	class:GOFi2cOLED
 textsize	.\lib\GOFi2cOLED\GOFi2cOLED.h	/^uint8_t  textsize;$/;"	m	class:GOFi2cOLED
 this_dummy_member_must_be_first	.\lib\avr-stl\include\type_traits.h	/^   typedef __true_type     this_dummy_member_must_be_first;$/;"	t	struct:__type_traits
-tick	.\src\wobbly.ino.cpp	/^int tick = 0;$/;"	v
-tickTraps	.\src\wobbly.ino.cpp	/^void tickTraps() {$/;"	f
-timeLastFrame	.\src\wobbly.ino.cpp	/^long timeLastFrame = 0;$/;"	v
-timeLastInput	.\src\wobbly.ino.cpp	/^long timeLastInput = 0;$/;"	v
 to_char_type	.\lib\avr-stl\include\char_traits.h	/^  static char_type to_char_type(const int_type& __c) {$/;"	f	class:__char_traits_base
 to_char_type	.\lib\avr-stl\include\char_traits.h	/^  static char_type to_char_type(const int_type& __c) {$/;"	f	class:char_traits
 to_int_type	.\lib\avr-stl\include\char_traits.h	/^  static int_type to_int_type(const char_type& __c) {$/;"	f	class:__char_traits_base
@@ -6837,8 +6781,6 @@ transpose8	.\lib\FastLED\bitswap.h	/^__attribute__((always_inline)) inline void 
 transpose8x1	.\lib\FastLED\bitswap.h	/^__attribute__((always_inline)) inline void transpose8x1(unsigned char *A, unsigned char *B) {$/;"	f
 transpose8x1_MSB	.\lib\FastLED\bitswap.h	/^__attribute__((always_inline)) inline void transpose8x1_MSB(unsigned char *A, unsigned char *B) {$/;"	f
 transpose8x1_noinline	.\lib\FastLED\bitswap.cpp	/^void transpose8x1_noinline(unsigned char *A, unsigned char *B) {$/;"	f
-trapList	.\src\wobbly.ino.cpp	/^std::list<Trap*> *trapList = new std::list<Trap*>;$/;"	v
-trapSize	.\src\wobbly.ino.cpp	/^uint8_t trapSize = 1;$/;"	v
 trigger	.\lib\FastLED\lib8tion.h	/^    void trigger() { mPrevTrigger = getTime() - mPeriod; };$/;"	f	class:CEveryNTimePeriods
 triwave8	.\lib\FastLED\lib8tion.h	/^LIB8STATIC uint8_t triwave8(uint8_t in)$/;"	f
 true	.\lib\avr-stl\include\stl_config.h	453;"	d
@@ -7048,9 +6990,7 @@ waitFully	.\lib\FastLED\platforms\avr\fastspi_avr.h	/^	static void waitFully() _
 waitFully	.\lib\FastLED\platforms\avr\fastspi_avr.h	/^	static void waitFully() __attribute__((always_inline)) { wait(); }$/;"	f	class:AVRUSART0SPIOutput
 waitFully	.\lib\FastLED\platforms\avr\fastspi_avr.h	/^	static void waitFully() __attribute__((always_inline)) { wait(); }$/;"	f	class:AVRUSART1SPIOutput
 waitInt	.\lib\I2Cdev\I2Cdev.cpp	/^    boolean Fastwire::waitInt() {$/;"	f	class:Fastwire
-waterList	.\src\wobbly.ino.cpp	/^std::list<Water*> *waterList = new std::list<Water*>;$/;"	v
 width	.\lib\GOFi2cOLED\GOFi2cOLED.cpp	/^uint8_t GOFi2cOLED::width(void) { $/;"	f	class:GOFi2cOLED
-winColor	.\src\wobbly.ino.cpp	/^CRGB::HTMLColorCode winColor;$/;"	v
 word	.\lib\FastLED\bitswap.h	/^  uint32_t word[2];$/;"	m	union:__anon22
 wrap	.\lib\GOFi2cOLED\GOFi2cOLED.h	/^boolean  wrap; \/\/ If set, 'wrap' text at right edge of display$/;"	m	class:GOFi2cOLED
 wrap	.\src\LightEffects.cpp	/^uint16_t LightEffects::wrap(uint16_t step) {$/;"	f	class:LightEffects
