@@ -5,10 +5,11 @@ Joystick::Joystick() {
 }
 
 void Joystick::getInput() {
-    // Zum testen ohne Joystick könnte man diesen auch durch drei andere Input Formen ersetzen, e.g. Buttons:
+    // Zum testen ohne Joystick kann man diesen auch durch drei andere Input Formen ersetzen, z.B. Buttons:
     // if(digitalRead(dataPinBackward) == HIGH) joystickTilt = -90;
     // if(digitalRead(dataPinForward) == HIGH) joystickTilt = 90;
     // if(digitalRead(dataPinAttack) == HIGH) joystickWobbleSpeed = ATTACK_THRESHOLD;
+    // in diesem Fall rest der methode  getInput() auskommentieren
 
     //Holt die Messdaten vom MPU Chip ab
     mpu6050.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);

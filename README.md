@@ -14,7 +14,7 @@ Woobli is a one dimensional arcade game, operated by a joystick that is a spiral
 - 3 standard LEDs (to indicate lives left)
 - Cables and 1K Resistors
 - One door-stopper spring or other spiral (for the wobble joystick)
-- 3D printed case and joystick head (files attached)
+- 3D printed case and joystick head (files [here](https://github.com/lsolcher/wobbly/3D-templates))
 - 5V/2A Charger (Amper number dependent on number of LEDs)
 
 ### Libraries needed (included in [lib](https://github.com/lsolcher/wobbly/tree/master/lib) folder)
