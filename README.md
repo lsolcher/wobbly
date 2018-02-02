@@ -15,7 +15,7 @@ Woobli is a one dimensional arcade game, operated by a joystick that is a spiral
 - 3 standard LEDs (to indicate lives left)
 - Cables and 1K Resistors
 - One door-stopper spring or other spiral (for the wobble joystick)
-- 3D printed case and joystick head (files [here](https://github.com/lsolcher/wobbly/3D-templates))
+- 3D printed case and joystick head (files [here](https://github.com/lsolcher/tree/master/wobbly/3D-templates))
 - 5V/2A Charger (Amper number dependent on number of LEDs)
 
 ### Libraries needed (included in [lib](https://github.com/lsolcher/wobbly/tree/master/lib) folder)
@@ -44,28 +44,29 @@ calculate like this: for each of your LEDs add 20mA (each LED has a maximum powe
 Note that a higher Amper number doesn't hurt, whereas a higher Voltage number is bad. Stick to 5V and experiment with the Ampers. In our case 2A where enough in the end.
 - **Important:** you need to connect one (-/gnd) cable to the arduino as well, because the data pin will need a closed circuit!
 - **Life LEDs:** connect a 1K resistor and cable to the longer tip (+) of each LED and put them individually into DataPins 28, 42  and 52 (you can use any free DataPin, but would then need to change the declaration in the sketch), connect the shorter legs to GND.
+- **Sound** connect one cable to GND and the other first to a 1K resistor and then to DataPin 8. The sound will be very quiet with that much resistance though. You can run up to 4 1K resistors parallel (not serial!), to get the max volume out of the speaker.
 
 
 ### Troubleshooting
 If you encounter problems running the sketch, try checking if all cables are in the correct sockets and/or try reconnecting them.
 You can check the functionality of individual components with example-sketches from the libraries.
 
-You could e.g. use File > Examples
-- \> MPU6050 > MPU6050_DMG6 (load to arduino, open serial monitor, set to 115200 bd, see input?) to test the functionality of the MPU
-- \> FastLED > Blink (then select the WS2812B strip from the list and upload sketch, LED strip blinks?) to test the functionality of the LED strips
-- \> Digital > Melody (load to arduino, hear sound?) to select the funtionality of the Speaker
-- \> Basic > Blink (load to arduino, see blinking?) to test functionality of the board
+You could e.g. use File > Examples >
+- MPU6050 > MPU6050_DMG6 (load to arduino, open serial monitor, set to 115200 bd, see input?) to test the functionality of the MPU
+- FastLED > Blink (then select the WS2812B strip from the list and upload sketch, LED strip blinks?) to test the functionality of the LED strips
+- Digital > Melody (load to arduino, hear sound?) to select the funtionality of the Speaker
+- Basic > Blink (load to arduino, see blinking?) to test functionality of the board
 
 For working on the code with a little bit more comfortable IDE (autocomplete, refactoring) you can use Visual Studio Code with an Arduino plugin. See [here](https://daniel-ziegler.com/arduino/mikrocontroller/ide/2017/07/10/Microsoft-Visual-Studio-Code-alternative-Arduino-IDE/) how to set it up.
 
 ## Game Components
 ### Player
 You are a shiny little LED. A pink LED that is. If you don't like to be in the pink, that's fine, you can adjust the color of the player in the method initialize() in wobbly.ino. You can basically adjust a lot of stuff, like game speed, all the colors, brightness, sound volume and much more in wobbly.ino.
-Anyway, you are a pink LED, you can move by tilting the Joystick (or to whatever device you attached your MPU6050 chip). You can move backwards and forwards in a 1D-LED-world. And you can wobble by, well, wobbling the joystick sidewards (you can adjust attacking range and attacking threshold in the wobbly.ino too!). This way you can kill enemies (those pesky little red LED dots approaching you). You're goal is to reach the exit in each level - the golden LED dots. If you reach level 10, you win the game! 
+Anyway, you are a pink LED, you can move by tilting the Joystick (or to whatever device you attached your MPU6050 chip). You can move backwards and forwards in a 1D-LED-world. And you can wobble by, well, wobbling the joystick sidewards (you can adjust attacking range and attacking threshold in the wobbly.ino too!). This way you can kill enemies (those pesky little red LED dots approaching you). You're goal is to reach the exit in each level - the golden LED dots. If you reach level 10, you win the game!
 ### Enemies
 Enemies are little red dots approaching you. They may move straight to you or move somewhat irrationally back and forth - you can adjust enemy behavior in the wobbly.ino! You can kill them by wobbling. Or they can kill you, if they reach you. You have three lives, if you loose all of 'em that's gameover.
 ### Spawners
-Did you ever wonder where all these little enemey dots come from? No, not what you thought! They come from enemy spawners of course. You can see them (indicated by a dark red color or - again - by any color YOU choose), theyn spawn enemies but you can't kill them! You can pass them though luckily. 
+Did you ever wonder where all these little enemey dots come from? No, not what you thought! They come from enemy spawners of course. You can see them (indicated by a dark red color or - again - by any color YOU choose), theyn spawn enemies but you can't kill them! You can pass them though luckily.
 ### Traps
 Traps are mean. They are usually between you and your goal. Now that's really nasty because Woobli is a 1D-game so how on earth pass a trap if there's no way around it? Now fortunately there is a trick to it: from time to time traps begin to flicker and change their color. Why? We don't know. Maybe they are recharching, maybe they just want to party. Anyway, if the do so, you can pass them! Oh - and you can adjust stuff like color and size of the traps.
 ### Water
@@ -98,7 +99,7 @@ In our case we use the letter method, and if the joystickWobbleSpeed reaches the
 ### 2. Animation Output
 The LightEffects.h and .cpp files are responible for - you guessed it - the light effects in the game, i.e. the output. You can use it as a standalone module as well though, there are some pretty neat effects, check 'em out!
 #### Setup
-LightEffects work with [FastLED](http://fastled.io/) and thus with [any of its compatible chipsets](https://github.com/FastLED/FastLED/wiki/Chipset-reference). 
+LightEffects work with [FastLED](http://fastled.io/) and thus with [any of its compatible chipsets](https://github.com/FastLED/FastLED/wiki/Chipset-reference).
 Depending on how many LEDs, which chipset, [colorcode](https://github.com/FastLED/FastLED/wiki/Pixel-reference) and datapin you use, you need to adjust [LighEffects.h](https://github.com/lsolcher/wobbly/blob/master/src/LightEffects.h). Check the lines 4 - 7:
 * #define NUM_LED <YOUR CHOSEN AMOUNT OF LEDS> (e.g. 135)
 * #define CHIPSET <YOUR CHIPSET> (e.g. WS2812)
@@ -114,7 +115,7 @@ Adds a water animation to the LEDs. You can define the origin of the animation, 
 ###### addTrapAnimation(uint16_t origin, uint16_t size, CRGB::HTMLColorCode activeColor, CRGB::HTMLColorCode inactiveColor, int tick)
 Adds a trap animation, that is an animation which flickers from time to time to the LEDs. You can define the origin of the animation, the size (how many LEDs it'll have), and the color of the trap when it's active (not flickering) or inactive (flickering). By passing it a tick value, the method determines if the animation should flicker right now or not. So e.g. passing it millis() during the main-loop() will make the animation flicker every second millisecond.
 addTrapAnimation(uint16_t origin, uint16_t size, CRGB::HTMLColorCode color, int tick, bool active);
-A variant of above's method where you just define one color for flickering and not flickering. 
+A variant of above's method where you just define one color for flickering and not flickering.
 ###### addPoint(uint16_t origin,CRGB::HTMLColorCode color)
 Adds a point with a position and a color to the LEDs.
 ###### addWaveAnimation(uint16_t origin, uint16_t size, CRGB::HTMLColorCode endWaveColor, CRGB::HTMLColorCode middleWaveColor)
@@ -122,16 +123,4 @@ Immediatly shows a wave animation originating from the LED defined with origin o
 ###### showSnakeAnimation(bool direction, CRGB::HTMLColorCode Color)
 Immediatly shows a snake animation with a direction (0 = up or right, 1 = down or left) with a defined color. The animation lights one color after another of the LED stripe until all are lighted.
 ###### showCrippleAnimation(int center, uint16_t steps, CRGB::HTMLColorCode crippleColor, CRGB::HTMLColorCode bgColor)
-Immediatly shows an animation with a waving animation centered around the defined center with the whole LED strip flashing intermittently. See https://youtu.be/nW1wG6Tooc4 
-
-
-
-
-
-
- 
-
-
-
-
-
+Immediatly shows an animation with a waving animation centered around the defined center with the whole LED strip flashing intermittently. See https://youtu.be/nW1wG6Tooc4
