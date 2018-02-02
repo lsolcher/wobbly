@@ -100,14 +100,14 @@ The LightEffects.h and .cpp files are responible for - you guessed it - the ligh
 #### Setup
 LightEffects work with [FastLED](http://fastled.io/) and thus with [any of its compatible chipsets](https://github.com/FastLED/FastLED/wiki/Chipset-reference). 
 Depending on how many LEDs, which chipset, [colorcode](https://github.com/FastLED/FastLED/wiki/Pixel-reference) and datapin you use, you need to adjust [LighEffects.h](https://github.com/lsolcher/wobbly/blob/master/src/LightEffects.h). Check the lines 4 - 7:
-#define NUM_LED <YOUR CHOSEN AMOUNT OF LEDS> (e.g. 135)
-#define CHIPSET <YOUR CHIPSET> (e.g. WS2812)
-#define DATAPIN <YOUR DATAPIN> (e.g. 6)
-#define COLORCODE <YOUR COLORCODE> (e.g. GRB)
+* #define NUM_LED <YOUR CHOSEN AMOUNT OF LEDS> (e.g. 135)
+* #define CHIPSET <YOUR CHIPSET> (e.g. WS2812)
+* #define DATAPIN <YOUR DATAPIN> (e.g. 6)
+* #define COLORCODE <YOUR COLORCODE> (e.g. GRB)
 #### Methods / Effects
-##### clear
+###### clear
 Clears existing LED values - works together with any add-method of the module. Clears all previously added animations.
-##### show
+###### show
 Shows existing LED values - works together with any add-method of the module. An addXY methods adds an animation to the LEDs. You can add several animation to the LEDs and then call show() to show all of 'em at once.
 ###### addWaterAnimation(uint16_t origin, uint16_t size, bool direction, CRGB::HTMLColorCode color)
 Adds a water animation to the LEDs. You can define the origin of the animation, the size (how many LEDs it'll have), the direction (will it flow backwards or forwards) and the code of the animation in the call.
