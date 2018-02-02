@@ -654,7 +654,7 @@ JOYSTICK_DEAD_ANGLE	.\src\Joystick.h	7;"	d
 JOYSTICK_DIRECTION	.\src\Joystick.h	5;"	d
 JOYSTICK_H	.\src\Joystick.h	2;"	d
 JOYSTICK_ORIENTATION	.\src\Joystick.h	4;"	d
-Joystick	.\src\Joystick.cpp	/^Joystick::Joystick() { \/\/define constructor$/;"	f	class:Joystick
+Joystick	.\src\Joystick.cpp	/^Joystick::Joystick() {$/;"	f	class:Joystick
 Joystick	.\src\Joystick.h	/^class Joystick {$/;"	c
 K170	.\lib\FastLED\hsv2rgb.cpp	275;"	d	file:
 K171	.\lib\FastLED\hsv2rgb.cpp	274;"	d	file:
@@ -1080,8 +1080,8 @@ MPU6050_WHO_AM_I_LENGTH	.\lib\MPU6050\MPU6050.h	393;"	d
 MPU6050_XG_FIFO_EN_BIT	.\lib\MPU6050\MPU6050.h	219;"	d
 MPU6050_YG_FIFO_EN_BIT	.\lib\MPU6050\MPU6050.h	220;"	d
 MPU6050_ZG_FIFO_EN_BIT	.\lib\MPU6050\MPU6050.h	221;"	d
-MPUTiltInput	.\src\Joystick.h	/^    RunningMedian MPUTiltInput = RunningMedian(5);$/;"	m	class:Joystick
-MPUWobbleInput	.\src\Joystick.h	/^    RunningMedian MPUWobbleInput = RunningMedian(5);$/;"	m	class:Joystick
+MPUAngleSamples	.\src\Joystick.h	/^    RunningMedian MPUAngleSamples = RunningMedian(5);$/;"	m	class:Joystick
+MPUWobbleSamples	.\src\Joystick.h	/^    RunningMedian MPUWobbleSamples = RunningMedian(5);$/;"	m	class:Joystick
 MS_COUNTER	.\lib\FastLED\platforms\arm\k20\led_sysdefs_arm_k20.h	35;"	d
 MS_COUNTER	.\lib\FastLED\platforms\arm\k66\led_sysdefs_arm_k66.h	35;"	d
 MS_COUNTER	.\lib\FastLED\platforms\arm\kl26\led_sysdefs_arm_kl26.h	38;"	d
@@ -4215,6 +4215,7 @@ getInterruptLatch	.\lib\MPU6050\MPU6050.cpp	/^bool MPU6050::getInterruptLatch() 
 getInterruptLatchClear	.\lib\MPU6050\MPU6050.cpp	/^bool MPU6050::getInterruptLatchClear() {$/;"	f	class:MPU6050
 getInterruptMode	.\lib\MPU6050\MPU6050.cpp	/^bool MPU6050::getInterruptMode() {$/;"	f	class:MPU6050
 getJoystickTilt	.\src\Joystick.cpp	/^  int Joystick::getJoystickTilt() {$/;"	f	class:Joystick
+getJoystickWobble	.\src\Joystick.cpp	/^  int Joystick::getJoystickWobble() {$/;"	f	class:Joystick
 getLastTriggerTime	.\lib\FastLED\lib8tion.h	/^    timeType getLastTriggerTime() { return mPrevTrigger; }$/;"	f	class:CEveryNTimePeriods
 getLives	.\src\Player.h	/^short Player::getLives() {$/;"	f	class:Player
 getLostArbitration	.\lib\MPU6050\MPU6050.cpp	/^bool MPU6050::getLostArbitration() {$/;"	f	class:MPU6050

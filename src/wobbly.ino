@@ -20,7 +20,7 @@
 // Game setup
 #define TICKTIME  20
 short currentLevel = 0;
-short difficulty = 0; //0 = easy, 1 = hard
+short difficulty = 0; //0 = easy,</lis 1 = hard
 bool attacking = false;
 short attackTicks = 0;
 int attackRange = 2;
@@ -38,14 +38,10 @@ CRGB::HTMLColorCode winColor;
 #define WORLD_MAX            999 //max world index
 #define DATA_PIN             6     // Daten Pin für den LED Schlauch am Arduino
 #define BRIGHTNESS           50
-#define DIRECTION            1     // 0 = oben nach unten, 1 = unten nach oben
-#define MIN_FRAME_INTERVAL  16    // Min interval bevor neuer Frame gezeichnet wird  33ms = 30fps / 16ms = 63fps
-#define GRAVITY              1     // 0/1 Schwerkraft benutzen (LED Streifen geht an der Wand hoch: 1)
 
 char* state = "INIT";
 long timeLastFrame = 0;
 long timeLastInput = 0;
-#define TIMEOUT              30000
 
 
 CRGB leds[LED_NUM];
@@ -99,20 +95,6 @@ void initialize() {
 
 
 void loop() {
-  //LightEffects effects;
-  /*effects.clear();
-  //tick++;
-  effects.addWaterAnimation(mapLed(100), 8, 0, CRGB::Blue);
-  effects.addWaterAnimation(mapLed(200), 50, 1, CRGB::Blue);
-  effects.addTrapAnimation(mapLed(500), 5, CRGB::Red, CRGB::Orange, tick);
-  effects.addPoint(mapLed(900), CRGB::Gold);
-  effects.addWaveAnimation(mapLed(900), 4, CRGB::Yellow, CRGB::Cyan);
-  //CRGB(189,183,107);
-
-  effects.show();
-  delay(50);*/
-  //effects.showCrippleAnimation(mapLed(500), 5, CRGB::Red, CRGB::Violet);
-
   if(state == "INIT") {
     initialize();
     loadLevel();
@@ -127,16 +109,6 @@ void loop() {
       Joystick::getInput();
       checkCollision();
       if(abs(Joystick::joystickTilt) > JOYSTICK_DEAD_ANGLE){
-            timeLastInput = millis();
-            if(state == "SCREENSAVER"){
-                loadStartMenu();
-                state = "GAME";
-            }
-        }else{
-            if(timeLastInput+TIMEOUT < millis()){
-                state = "SCREENSAVER";
-            }
-        }
         tick > 1000 ? tick = 0 : tick++;
         timeLastInput = millis();
       if(!attacking) {
@@ -149,7 +121,6 @@ void loop() {
           attackTicks--;
       }
       if(!attacking) {
-        //Serial.println(Joystick::joystickTilt);
         player->move(Joystick::joystickTilt);
       }
       gameTick();
@@ -159,9 +130,6 @@ void loop() {
 }
 
 void checkAttack() {
-  //Serial.println(Joystick::joystickWobbleSpeed);
-//  Serial.println(ATTACK_THRESHOLD);
-
   if(Joystick::joystickWobbleSpeed > ATTACK_THRESHOLD) {
     attacking = true;
     attackTicks = attackTime;

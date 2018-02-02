@@ -3,6 +3,7 @@
 ## One Dimensional Arcade Game
 
 For images of the game and build process please refer to [our PDF presentation](https://github.com/lsolcher/wobbly/blob/master/woobli.pdf).
+N.B.: Due to hardware issues we're a bit late with uploading a demo here. Be sure to check back later this month (february) to experience amazing WOOBLI in action!
 
 Woobli is a one dimensional arcade game, operated by a joystick that is a spiral. The playing field is an LED strip (one dimensional array). The player starts at one end of the array and needs to move to the opposite exit. The player is operated by a joystick and can walk forwards and backwards, speed and direction determined by the tilt of the joystick. On the way she will encounter obstacles such as lava and water, and also enemies. To survive an encounter with an enemy, the player needs to attack it by wobbling the joystick-spiral really fast. When a certain threshold is reached the player will go into attack mode, become larger and kill all enemies in reach.
 
@@ -59,10 +60,24 @@ For working on the code with a little bit more comfortable IDE (autocomplete, re
 
 ## Game Components
 ### Player
+You are a shiny little LED. A pink LED that is. If you don't like to be in the pink, that's fine, you can adjust the color of the player in the method initialize() in wobbly.ino. You can basically adjust a lot of stuff, like game speed, all the colors, brightness, sound volume and much more in wobbly.ino.
+Anyway, you are a pink LED, you can move by tilting the Joystick (or to whatever device you attached your MPU6050 chip). You can move backwards and forwards in a 1D-LED-world. And you can wobble by, well, wobbling the joystick sidewards (you can adjust attacking range and attacking threshold in the wobbly.ino too!). This way you can kill enemies approaching (those pesky little red LED dots approaching you). You're goal is to reach the exit in each level - the gold LED dots. If you reach level 10, you win the game! 
 ### Enemies
+Enemies are little red dots approaching you. They may move straight to you or move somewhat irrationally back and forth - you can adjust enemy behavior in the wobbly.ino! You can kill them by wobbling. Or they can kill you, if they reach you. You have three lives, if you loose all of 'em that's gameover.
+### Spawners
+Did you ever wonder where all these little enemey dots come from? No, not what you think! They come from enemy spawners of course. You can see them (indicated by a dark red color or - again - by any color YOU choose), theyn spawn enemies but you can't kill them! You can pass them though luckily. 
 ### Traps
+Traps are mean. They are usually between you and your goal. Now that's really nasty because Woobli is a 1D-game so how on earth pass a trap if there's no way around it? Now luckily there is a trick to it: from time to time traps begin to flicker and change their color. Why? We don't know. Maybe they are recharching, maybe they just want to party. Anyway, if the do so, you can pass them! Oh - and you can adjust stuff like color and size of the traps.
 ### Water
-### Lava
+There's water, too! Sometimes you can go with the flow, meaning you'll move with the water, whcih makes you, the player move faster. And sometimes it just feels like everything is against you, meaning the water will make you go slower. Cheesy, isn't it?
+So that's probably hard to imagine, see https://youtu.be/0I160ADb4Sk to get an idea of how that works. In the example the creek (the little one) would make you slower, and rapid stream would make you faster.
+### Adjusting stuff
+The game is made the way that it is as adjustable as possible. Here is a list of stuff you can adjust - you find all these variables in the wobbly.ino
+* TICKTIME: defines how long a game tick is and thus, how fast the game is. The higher this value is, the slower is the game
+* LED_NUM: If you want to set the game up with 50 LEDs - that's fine; if you want to do it with 323 LEDs that's fine too; just define the amount of LEDs here
+* DATA_PIN: Define the data input for your LEDs here
+* Playercolor: (player->setColor(COLOR)) in init() -> Here you can choose your favorite color for your favorite token in your favorite game
+* Color and size of any in-game-object: See the methods ShowWater, ShowExits, Show... at the bottom of wobbly.ino You can pass any [HTMLColorCode](http://fastled.io/docs/3.1/group___pixeltypes.html#gaeb40a08b7cb90c1e21bd408261558b99) you want. Plus you can define direction of water, size of traps etc. in the corresponding calls. See LightEffects.h reference for details.
 
 ## Modules
 ### 1. Joystick Input
@@ -80,3 +95,4 @@ You can either use this variable as a linear function (the faster it wobbles, th
 In our case we use the letter method, and if the joystickWobbleSpeed reaches the threshold our player goes to attack mode. For this we implemented the method isAttacking() which returns true if the threshold is reached.
 
 ### 2. Animation Output
+
