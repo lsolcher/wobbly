@@ -84,15 +84,54 @@ The game is made the way that it is as adjustable as possible. Here is a list of
 The joystick can be used as an independent module for input and deployed in other games and projects.
 To do this add the Joystick library (Joystick.cpp & Joystick.h) to your Arduino > Libraries folder.
 The library gives you access to two main input values: joystickTilt and joystickWobbleSpeed.
-#### joystickTilt
+#### Methods
+##### joystickTilt
 Tilt of the Joystick, which is measured in degrees and has a value of -90 to 90.
 In our game we use this as two parameters joystickTilt < 0 walking backwards and joystickTilt >0 walking forwards.
 The value of the tilt determines the speed of walking: a 90° angle indicates a very tiltet joystick and the player moves very fast. At a 10° angle the player moves slow.
 The tilt is measured from an erect joystick downwards along one axis (in our case back and forth, can be set with JOYSTICK_ORIENTATION).
-#### joystickWobbleSpeed
+##### joystickWobbleSpeed
 How fast the joystick wobbles (if you let the spiral wobble).
 You can either use this variable as a linear function (the faster it wobbles, the more of something happens, or the stronger something appears), or in combination with a threshold. If the joystick wobbles faster than the threshold, an action is triggered.
 In our case we use the letter method, and if the joystickWobbleSpeed reaches the threshold our player goes to attack mode. For this we implemented the method isAttacking() which returns true if the threshold is reached.
 
 ### 2. Animation Output
+The LightEffects.h and .cpp files are responible for - you guessed it - the light effects in the game, i.e. the output. You can use it as a standalone module as well though, there are some pretty neat effects, check 'em out!
+#### Setup
+LightEffects work with [FastLED](http://fastled.io/) and thus with [any of its compatible chipsets](https://github.com/FastLED/FastLED/wiki/Chipset-reference). 
+Depending on how many LEDs, which chipset, [colorcode](https://github.com/FastLED/FastLED/wiki/Pixel-reference) and datapin you use, you need to adjust [LighEffects.h](https://github.com/lsolcher/wobbly/blob/master/src/LightEffects.h). Check the lines 4 - 7:
+#define NUM_LED <YOUR CHOSEN AMOUNT OF LEDS> (e.g. 135)
+#define CHIPSET <YOUR CHIPSET> (e.g. WS2812)
+#define DATAPIN <YOUR DATAPIN> (e.g. 6)
+#define COLORCODE <YOUR COLORCODE> (e.g. GRB)
+#### Methods / Effects
+##### clear
+Clears existing LED values - works together with any add-method of the module. Clears all previously added animations.
+##### show
+Shows existing LED values - works together with any add-method of the module. An addXY methods adds an animation to the LEDs. You can add several animation to the LEDs and then call show() to show all of 'em at once.
+###### addWaterAnimation(uint16_t origin, uint16_t size, bool direction, CRGB::HTMLColorCode color)
+Adds a water animation to the LEDs. You can define the origin of the animation, the size (how many LEDs it'll have), the direction (will it flow backwards or forwards) and the code of the animation in the call.
+###### addTrapAnimation(uint16_t origin, uint16_t size, CRGB::HTMLColorCode activeColor, CRGB::HTMLColorCode inactiveColor, int tick)
+Adds a trap animation, that is an animation which flickers from time to time to the LEDs. You can define the origin of the animation, the size (how many LEDs it'll have), and the color of the trap when it's active (not flickering) or inactive (flickering). By passing it a tick value, the method determines if the animation should flicker right now or not. So e.g. passing it millis() during the main-loop() will make the animation flicker every second millisecond.
+addTrapAnimation(uint16_t origin, uint16_t size, CRGB::HTMLColorCode color, int tick, bool active);
+A variant of above's method where you just define one color for flickering and not flickering. 
+###### addPoint(uint16_t origin,CRGB::HTMLColorCode color)
+Adds a point with a position and a color to the LEDs.
+###### addWaveAnimation(uint16_t origin, uint16_t size, CRGB::HTMLColorCode endWaveColor, CRGB::HTMLColorCode middleWaveColor)
+Immediatly shows a wave animation originating from the LED defined with origin of the LEDs and spreading evenly to both sides depending on size. The middle of the wave will me as defined with middleWaveColor, the end as defined with endWaveColor.
+###### showSnakeAnimation(bool direction, CRGB::HTMLColorCode Color)
+Immediatly shows a snake animation with a direction (0 = up or right, 1 = down or left) with a defined color. The animation lights one color after another of the LED stripe until all are lighted.
+###### showCrippleAnimation(int center, uint16_t steps, CRGB::HTMLColorCode crippleColor, CRGB::HTMLColorCode bgColor)
+Immediatly shows an animation with a waving animation centered around the defined center with the whole LED strip flashing intermittently. See https://youtu.be/nW1wG6Tooc4 
+
+
+
+
+
+
+ 
+
+
+
+
 
