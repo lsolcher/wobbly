@@ -28,7 +28,7 @@ ARMHardwareSPIOutput	.\lib\FastLED\platforms\arm\kl26\fastspi_arm_kl26.h	/^  ARM
 ARMHardwareSPIOutput	.\lib\FastLED\platforms\arm\kl26\fastspi_arm_kl26.h	/^class ARMHardwareSPIOutput {$/;"	c
 ARM_HARDWARE_SPI	.\lib\FastLED\platforms\arm\kl26\fastspi_arm_kl26.h	83;"	d
 ASM_VARS	.\lib\FastLED\platforms\avr\clockless_trinket.h	172;"	d
-ATTACK_THRESHOLD	.\src\Joystick.h	6;"	d
+ATTACK_THRESHOLD	.\src\Joystick.h	23;"	d
 AVG15	.\lib\FastLED\noise.cpp	26;"	d	file:
 AVG15	.\lib\FastLED\noise.cpp	30;"	d	file:
 AVG15	.\lib\FastLED\noise.cpp	51;"	d	file:
@@ -271,7 +271,6 @@ Coral	.\lib\FastLED\pixeltypes.h	/^        Coral=0xFF7F50,$/;"	e	enum:CRGB::__an
 CornflowerBlue	.\lib\FastLED\pixeltypes.h	/^        CornflowerBlue=0x6495ED,$/;"	e	enum:CRGB::__anon45
 Cornsilk	.\lib\FastLED\pixeltypes.h	/^        Cornsilk=0xFFF8DC,$/;"	e	enum:CRGB::__anon45
 Crimson	.\lib\FastLED\pixeltypes.h	/^        Crimson=0xDC143C,$/;"	e	enum:CRGB::__anon45
-CurrentProjectSetting	.\src\.vs\ProjectSettings.json	/^  "CurrentProjectSetting": "x86-Debug"$/;"	f
 Cyan	.\lib\FastLED\pixeltypes.h	/^        Cyan=0x00FFFF,$/;"	e	enum:CRGB::__anon45
 D1	.\lib\FastLED\platforms\arm\common\m0clockless.h	213;"	d
 D1	.\lib\FastLED\platforms\avr\clockless_trinket.h	74;"	d
@@ -394,7 +393,6 @@ Entire_Display_On_Resume_Cmd	.\lib\GOFi2cOLED\GOFi2cOLED.h	41;"	d
 Entity	.\src\Entity.h	/^Entity::Entity() {$/;"	f	class:Entity
 Entity	.\src\Entity.h	/^Entity::Entity(int position, CRGB::HTMLColorCode color, char* type) {$/;"	f	class:Entity
 Entity	.\src\Entity.h	/^class Entity {$/;"	c
-ExpandedNodes	.\src\.vs\VSWorkspaceState.json	/^  "ExpandedNodes": [$/;"	f
 F	.\lib\FastLED\lib8tion.h	/^  T f:F;$/;"	m	class:q
 F	.\lib\MPU6050\MPU6050_6Axis_MotionApps20.h	57;"	d
 F	.\lib\MPU6050\MPU6050_9Axis_MotionApps41.h	57;"	d
@@ -650,10 +648,10 @@ InputPin	.\lib\FastLED\fastpin.h	/^	InputPin(int pin) : Pin(pin) { setInput(); }
 InputPin	.\lib\FastLED\fastpin.h	/^class InputPin : public Pin {$/;"	c
 Ivory	.\lib\FastLED\pixeltypes.h	/^        Ivory=0xFFFFF0,$/;"	e	enum:CRGB::__anon45
 JMPLOOP2	.\lib\FastLED\platforms\avr\clockless_trinket.h	312;"	d
-JOYSTICK_DEAD_ANGLE	.\src\Joystick.h	7;"	d
-JOYSTICK_DIRECTION	.\src\Joystick.h	5;"	d
-JOYSTICK_H	.\src\Joystick.h	2;"	d
-JOYSTICK_ORIENTATION	.\src\Joystick.h	4;"	d
+JOYSTICK_DEAD_ANGLE	.\src\Joystick.h	24;"	d
+JOYSTICK_DIRECTION	.\src\Joystick.h	22;"	d
+JOYSTICK_H	.\src\Joystick.h	19;"	d
+JOYSTICK_ORIENTATION	.\src\Joystick.h	21;"	d
 Joystick	.\src\Joystick.cpp	/^Joystick::Joystick() {$/;"	f	class:Joystick
 Joystick	.\src\Joystick.h	/^class Joystick {$/;"	c
 K170	.\lib\FastLED\hsv2rgb.cpp	275;"	d	file:
@@ -1080,8 +1078,8 @@ MPU6050_WHO_AM_I_LENGTH	.\lib\MPU6050\MPU6050.h	393;"	d
 MPU6050_XG_FIFO_EN_BIT	.\lib\MPU6050\MPU6050.h	219;"	d
 MPU6050_YG_FIFO_EN_BIT	.\lib\MPU6050\MPU6050.h	220;"	d
 MPU6050_ZG_FIFO_EN_BIT	.\lib\MPU6050\MPU6050.h	221;"	d
-MPUAngleSamples	.\src\Joystick.h	/^    RunningMedian MPUAngleSamples = RunningMedian(5);$/;"	m	class:Joystick
-MPUWobbleSamples	.\src\Joystick.h	/^    RunningMedian MPUWobbleSamples = RunningMedian(5);$/;"	m	class:Joystick
+MPUTiltInput	.\src\Joystick.h	/^    RunningMedian MPUTiltInput = RunningMedian(5);$/;"	m	class:Joystick
+MPUWobbleInput	.\src\Joystick.h	/^    RunningMedian MPUWobbleInput = RunningMedian(5);$/;"	m	class:Joystick
 MS_COUNTER	.\lib\FastLED\platforms\arm\k20\led_sysdefs_arm_k20.h	35;"	d
 MS_COUNTER	.\lib\FastLED\platforms\arm\k66\led_sysdefs_arm_k66.h	35;"	d
 MS_COUNTER	.\lib\FastLED\platforms\arm\kl26\led_sysdefs_arm_kl26.h	38;"	d
@@ -1294,7 +1292,6 @@ Plaid	.\lib\FastLED\pixeltypes.h	/^        Plaid=0xCC5533,$/;"	e	enum:CRGB::__an
 Player	.\src\Player.h	/^class Player: public Entity {$/;"	c
 Plum	.\lib\FastLED\pixeltypes.h	/^        Plum=0xDDA0DD,$/;"	e	enum:CRGB::__anon45
 PowderBlue	.\lib\FastLED\pixeltypes.h	/^        PowderBlue=0xB0E0E6,$/;"	e	enum:CRGB::__anon45
-PreviewInSolutionExplorer	.\src\.vs\VSWorkspaceState.json	/^  "PreviewInSolutionExplorer": false$/;"	f
 Purple	.\lib\FastLED\pixeltypes.h	/^        Purple=0x800080,$/;"	e	enum:CRGB::__anon45
 QADD7_ARM_DSP_ASM	.\lib\FastLED\lib8tion.h	193;"	d
 QADD7_C	.\lib\FastLED\lib8tion.h	191;"	d

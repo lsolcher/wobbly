@@ -20,7 +20,7 @@
 // Game setup
 #define TICKTIME  20
 short currentLevel = 0;
-short difficulty = 0; //0 = easy,</lis 1 = hard
+short difficulty = 0; //0 = easy, 1 = hard
 bool attacking = false;
 short attackTicks = 0;
 int attackRange = 2;
@@ -103,12 +103,11 @@ void loop() {
     if(attacking){
           SFXattacking();
         }else{
-          SFXtilt(Joystick::joystickTilt);
+          SFXtilt(joystick.getJoystickTilt());
         }
     if (millis() - timeLastInput >= TICKTIME) {
-      Joystick::getInput();
+      joystick.getInput();
       checkCollision();
-      if(abs(Joystick::joystickTilt) > JOYSTICK_DEAD_ANGLE){
         tick > 1000 ? tick = 0 : tick++;
         timeLastInput = millis();
       if(!attacking) {
@@ -121,7 +120,7 @@ void loop() {
           attackTicks--;
       }
       if(!attacking) {
-        player->move(Joystick::joystickTilt);
+        player->move(joystick.getJoystickTilt());
       }
       gameTick();
       drawGame();
@@ -130,7 +129,10 @@ void loop() {
 }
 
 void checkAttack() {
-  if(Joystick::joystickWobbleSpeed > ATTACK_THRESHOLD) {
+  //Serial.println(Joystick::joystickWobbleSpeed);
+//  Serial.println(ATTACK_THRESHOLD);
+
+  if(joystick.getJoystickWobble() > ATTACK_THRESHOLD) {
     attacking = true;
     attackTicks = attackTime;
   }
