@@ -1,11 +1,11 @@
 #include "Joystick.h"
 
 
-Joystick::Joystick() { //define constructor
+Joystick::Joystick() {
 }
 
 void Joystick::getInput() {
-    // This is respeedonsible for the spieler movement speedeed and angreifend.
+    //This is respeedonsible for the spieler movement speedeed and angreifend.
     // You can replace it with anything you want that passes a -90>+90 value to joystickTilt
     // and any value to joystickWackelSpeed that is greater than ATTACK_THRESHOLD (defined at start)
     // For example you could use 3 momentery buttons:
@@ -36,4 +36,8 @@ void Joystick::getInput() {
 
   int Joystick::getJoystickTilt() {
     return joystickTilt;
+  }
+
+  int Joystick::getJoystickWobble() {
+    return joystickWobbleSpeed;
   }
