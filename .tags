@@ -1080,8 +1080,8 @@ MPU6050_WHO_AM_I_LENGTH	.\lib\MPU6050\MPU6050.h	393;"	d
 MPU6050_XG_FIFO_EN_BIT	.\lib\MPU6050\MPU6050.h	219;"	d
 MPU6050_YG_FIFO_EN_BIT	.\lib\MPU6050\MPU6050.h	220;"	d
 MPU6050_ZG_FIFO_EN_BIT	.\lib\MPU6050\MPU6050.h	221;"	d
-MPUAngleSamples	.\src\Joystick.h	/^    RunningMedian MPUAngleSamples = RunningMedian(5);$/;"	m	class:Joystick
-MPUWobbleSamples	.\src\Joystick.h	/^    RunningMedian MPUWobbleSamples = RunningMedian(5);$/;"	m	class:Joystick
+MPUTiltInput	.\src\Joystick.h	/^    RunningMedian MPUTiltInput = RunningMedian(5);$/;"	m	class:Joystick
+MPUWobbleInput	.\src\Joystick.h	/^    RunningMedian MPUWobbleInput = RunningMedian(5);$/;"	m	class:Joystick
 MS_COUNTER	.\lib\FastLED\platforms\arm\k20\led_sysdefs_arm_k20.h	35;"	d
 MS_COUNTER	.\lib\FastLED\platforms\arm\k66\led_sysdefs_arm_k66.h	35;"	d
 MS_COUNTER	.\lib\FastLED\platforms\arm\kl26\led_sysdefs_arm_kl26.h	38;"	d

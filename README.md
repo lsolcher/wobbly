@@ -36,13 +36,13 @@ Woobli is a one dimensional arcade game, operated by a joystick that is a spiral
 ## Connections
 For a first trial it's advisable to use a breadboard.
 
-- MPU6050: see [this diagram](https://3.bp.blogspot.com/-oZgRb23Jj2A/U8FoKkbt1mI/AAAAAAAAAJ8/FTjt2dNlI_o/s1600/5.jpg)
-- WS2812B: the data wire (usually green) to DataPin 6, the GND (black or white) cable to GND
-- **Electricity for WS2812B**the red (+) and black (-/gnd) wire should be connected to an external power source, because excessiv power could damage your arduino board.
+- **MPU6050:** see [this diagram](https://3.bp.blogspot.com/-oZgRb23Jj2A/U8FoKkbt1mI/AAAAAAAAAJ8/FTjt2dNlI_o/s1600/5.jpg)
+- **WS2812B:** the data wire (usually green) to DataPin 6, the GND (black or white) cable to GND
+- **Electricity for WS2812B** the red (+) and black (-/gnd) wire should be connected to an external power source, because excessiv power could damage your arduino board.
 calculate like this: for each of your LEDs add 20mA (each LED has a maximum power of 60mA when all three rgb lights (20mA/each) are on full brightness (=white). however, you will barely ever use all your LEDs at full power, so calculating with 20-30mA per LED will serve most purposes). In our case we had 288 LEDs x 20mA = ca. 6A
 Note that a higher Amper number doesn't hurt, whereas a higher Voltage number is bad. Stick to 5V and experiment with the Ampers. In our case 2A where enough in the end.
 - **Important:** you need to connect one (-/gnd) cable to the arduino as well, because the data pin will need a closed circuit!
-- Life LEDs: connect a 1K resistor and cable to the longer tip (+) of each LED and put them individually into DataPins 28, 42  and 52 (you can use any free DataPin, but would then need to change the declaration in the sketch), connect the shorter legs to GND.
+- **Life LEDs:** connect a 1K resistor and cable to the longer tip (+) of each LED and put them individually into DataPins 28, 42  and 52 (you can use any free DataPin, but would then need to change the declaration in the sketch), connect the shorter legs to GND.
 
 
 ### Troubleshooting

@@ -17,12 +17,13 @@ class Joystick {
     int16_t gx, gy, gz;
     int joystickTilt;
     int joystickWobbleSpeed;
-    RunningMedian MPUAngleSamples = RunningMedian(5);
-    RunningMedian MPUWobbleSamples = RunningMedian(5);
+    RunningMedian MPUTiltInput = RunningMedian(5);
+    RunningMedian MPUWobbleInput = RunningMedian(5);
   public:
     Joystick();
     void getInput();
     int getJoystickTilt();
+    int getJoystickWobble();
     bool isAttacking();
 };
 
